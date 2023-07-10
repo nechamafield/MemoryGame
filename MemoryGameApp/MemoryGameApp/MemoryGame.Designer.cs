@@ -31,7 +31,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnNextTurn = new System.Windows.Forms.Button();
             this.lblTurnNumber = new System.Windows.Forms.Label();
-            this.lblScore = new System.Windows.Forms.Label();
+            this.lblScoreNum = new System.Windows.Forms.Label();
             this.btn11 = new System.Windows.Forms.Button();
             this.btn12 = new System.Windows.Forms.Button();
             this.btn13 = new System.Windows.Forms.Button();
@@ -68,6 +68,9 @@
             this.btn63 = new System.Windows.Forms.Button();
             this.btn62 = new System.Windows.Forms.Button();
             this.btn61 = new System.Windows.Forms.Button();
+            this.lblTurn = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.lblStartToPlay = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -87,6 +90,7 @@
             // 
             this.btnNextTurn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnNextTurn.BackColor = System.Drawing.Color.CadetBlue;
+            this.btnNextTurn.Enabled = false;
             this.btnNextTurn.Font = new System.Drawing.Font("Snap ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnNextTurn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNextTurn.Location = new System.Drawing.Point(232, 24);
@@ -99,30 +103,29 @@
             // lblTurnNumber
             // 
             this.lblTurnNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblTurnNumber.Font = new System.Drawing.Font("Stencil", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTurnNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTurnNumber.Location = new System.Drawing.Point(444, 25);
+            this.lblTurnNumber.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTurnNumber.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblTurnNumber.Location = new System.Drawing.Point(651, 37);
             this.lblTurnNumber.Name = "lblTurnNumber";
-            this.lblTurnNumber.Size = new System.Drawing.Size(225, 65);
+            this.lblTurnNumber.Size = new System.Drawing.Size(69, 41);
             this.lblTurnNumber.TabIndex = 2;
-            this.lblTurnNumber.Text = "Turn Number:";
             this.lblTurnNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblScore
+            // lblScoreNum
             // 
-            this.lblScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblScore.Font = new System.Drawing.Font("Stencil", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblScore.Location = new System.Drawing.Point(715, 9);
-            this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(164, 101);
-            this.lblScore.TabIndex = 3;
-            this.lblScore.Text = "Score:";
-            this.lblScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblScoreNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblScoreNum.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblScoreNum.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblScoreNum.Location = new System.Drawing.Point(835, 39);
+            this.lblScoreNum.Name = "lblScoreNum";
+            this.lblScoreNum.Size = new System.Drawing.Size(77, 39);
+            this.lblScoreNum.TabIndex = 3;
+            this.lblScoreNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn11
             // 
-            this.btn11.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn11.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn11.Enabled = false;
             this.btn11.Location = new System.Drawing.Point(56, 142);
             this.btn11.Name = "btn11";
             this.btn11.Size = new System.Drawing.Size(107, 94);
@@ -131,7 +134,8 @@
             // 
             // btn12
             // 
-            this.btn12.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn12.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn12.Enabled = false;
             this.btn12.Location = new System.Drawing.Point(208, 142);
             this.btn12.Name = "btn12";
             this.btn12.Size = new System.Drawing.Size(107, 94);
@@ -140,7 +144,8 @@
             // 
             // btn13
             // 
-            this.btn13.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn13.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn13.Enabled = false;
             this.btn13.Location = new System.Drawing.Point(366, 142);
             this.btn13.Name = "btn13";
             this.btn13.Size = new System.Drawing.Size(107, 94);
@@ -149,7 +154,8 @@
             // 
             // btn14
             // 
-            this.btn14.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn14.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn14.Enabled = false;
             this.btn14.Location = new System.Drawing.Point(518, 142);
             this.btn14.Name = "btn14";
             this.btn14.Size = new System.Drawing.Size(107, 94);
@@ -158,7 +164,8 @@
             // 
             // btn15
             // 
-            this.btn15.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn15.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn15.Enabled = false;
             this.btn15.Location = new System.Drawing.Point(658, 142);
             this.btn15.Name = "btn15";
             this.btn15.Size = new System.Drawing.Size(107, 94);
@@ -167,7 +174,8 @@
             // 
             // btn16
             // 
-            this.btn16.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn16.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn16.Enabled = false;
             this.btn16.Location = new System.Drawing.Point(805, 142);
             this.btn16.Name = "btn16";
             this.btn16.Size = new System.Drawing.Size(107, 94);
@@ -176,7 +184,8 @@
             // 
             // btn26
             // 
-            this.btn26.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn26.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn26.Enabled = false;
             this.btn26.Location = new System.Drawing.Point(805, 267);
             this.btn26.Name = "btn26";
             this.btn26.Size = new System.Drawing.Size(107, 94);
@@ -185,7 +194,8 @@
             // 
             // btn25
             // 
-            this.btn25.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn25.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn25.Enabled = false;
             this.btn25.Location = new System.Drawing.Point(658, 267);
             this.btn25.Name = "btn25";
             this.btn25.Size = new System.Drawing.Size(107, 94);
@@ -195,7 +205,8 @@
             // btn24
             // 
             this.btn24.AccessibleDescription = "btn10";
-            this.btn24.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn24.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn24.Enabled = false;
             this.btn24.Location = new System.Drawing.Point(518, 267);
             this.btn24.Name = "btn24";
             this.btn24.Size = new System.Drawing.Size(107, 94);
@@ -205,7 +216,8 @@
             // btn23
             // 
             this.btn23.AccessibleDescription = "btn9";
-            this.btn23.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn23.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn23.Enabled = false;
             this.btn23.Location = new System.Drawing.Point(366, 267);
             this.btn23.Name = "btn23";
             this.btn23.Size = new System.Drawing.Size(107, 94);
@@ -215,7 +227,8 @@
             // btn22
             // 
             this.btn22.AccessibleDescription = "btn8";
-            this.btn22.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn22.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn22.Enabled = false;
             this.btn22.Location = new System.Drawing.Point(208, 267);
             this.btn22.Name = "btn22";
             this.btn22.Size = new System.Drawing.Size(107, 94);
@@ -225,7 +238,8 @@
             // btn21
             // 
             this.btn21.AccessibleDescription = "btn7";
-            this.btn21.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn21.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn21.Enabled = false;
             this.btn21.Location = new System.Drawing.Point(56, 267);
             this.btn21.Name = "btn21";
             this.btn21.Size = new System.Drawing.Size(107, 94);
@@ -234,7 +248,8 @@
             // 
             // btn36
             // 
-            this.btn36.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn36.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn36.Enabled = false;
             this.btn36.Location = new System.Drawing.Point(805, 393);
             this.btn36.Name = "btn36";
             this.btn36.Size = new System.Drawing.Size(107, 94);
@@ -243,7 +258,8 @@
             // 
             // btn35
             // 
-            this.btn35.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn35.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn35.Enabled = false;
             this.btn35.Location = new System.Drawing.Point(658, 393);
             this.btn35.Name = "btn35";
             this.btn35.Size = new System.Drawing.Size(107, 94);
@@ -252,7 +268,8 @@
             // 
             // btn34
             // 
-            this.btn34.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn34.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn34.Enabled = false;
             this.btn34.Location = new System.Drawing.Point(518, 393);
             this.btn34.Name = "btn34";
             this.btn34.Size = new System.Drawing.Size(107, 94);
@@ -261,7 +278,8 @@
             // 
             // btn33
             // 
-            this.btn33.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn33.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn33.Enabled = false;
             this.btn33.Location = new System.Drawing.Point(366, 393);
             this.btn33.Name = "btn33";
             this.btn33.Size = new System.Drawing.Size(107, 94);
@@ -270,7 +288,8 @@
             // 
             // btn32
             // 
-            this.btn32.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn32.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn32.Enabled = false;
             this.btn32.Location = new System.Drawing.Point(208, 393);
             this.btn32.Name = "btn32";
             this.btn32.Size = new System.Drawing.Size(107, 94);
@@ -279,7 +298,8 @@
             // 
             // btn31
             // 
-            this.btn31.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn31.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn31.Enabled = false;
             this.btn31.Location = new System.Drawing.Point(56, 393);
             this.btn31.Name = "btn31";
             this.btn31.Size = new System.Drawing.Size(107, 94);
@@ -288,7 +308,8 @@
             // 
             // btn46
             // 
-            this.btn46.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn46.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn46.Enabled = false;
             this.btn46.Location = new System.Drawing.Point(805, 516);
             this.btn46.Name = "btn46";
             this.btn46.Size = new System.Drawing.Size(107, 94);
@@ -297,7 +318,8 @@
             // 
             // btn45
             // 
-            this.btn45.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn45.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn45.Enabled = false;
             this.btn45.Location = new System.Drawing.Point(658, 516);
             this.btn45.Name = "btn45";
             this.btn45.Size = new System.Drawing.Size(107, 94);
@@ -306,7 +328,8 @@
             // 
             // btn44
             // 
-            this.btn44.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn44.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn44.Enabled = false;
             this.btn44.Location = new System.Drawing.Point(518, 516);
             this.btn44.Name = "btn44";
             this.btn44.Size = new System.Drawing.Size(107, 94);
@@ -315,7 +338,8 @@
             // 
             // btn43
             // 
-            this.btn43.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn43.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn43.Enabled = false;
             this.btn43.Location = new System.Drawing.Point(366, 516);
             this.btn43.Name = "btn43";
             this.btn43.Size = new System.Drawing.Size(107, 94);
@@ -324,7 +348,8 @@
             // 
             // btn42
             // 
-            this.btn42.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn42.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn42.Enabled = false;
             this.btn42.Location = new System.Drawing.Point(208, 516);
             this.btn42.Name = "btn42";
             this.btn42.Size = new System.Drawing.Size(107, 94);
@@ -333,7 +358,8 @@
             // 
             // btn41
             // 
-            this.btn41.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn41.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn41.Enabled = false;
             this.btn41.Location = new System.Drawing.Point(56, 516);
             this.btn41.Name = "btn41";
             this.btn41.Size = new System.Drawing.Size(107, 94);
@@ -342,7 +368,8 @@
             // 
             // btn56
             // 
-            this.btn56.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn56.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn56.Enabled = false;
             this.btn56.Location = new System.Drawing.Point(805, 649);
             this.btn56.Name = "btn56";
             this.btn56.Size = new System.Drawing.Size(107, 94);
@@ -351,7 +378,8 @@
             // 
             // btn55
             // 
-            this.btn55.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn55.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn55.Enabled = false;
             this.btn55.Location = new System.Drawing.Point(658, 649);
             this.btn55.Name = "btn55";
             this.btn55.Size = new System.Drawing.Size(107, 94);
@@ -360,7 +388,8 @@
             // 
             // btn54
             // 
-            this.btn54.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn54.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn54.Enabled = false;
             this.btn54.Location = new System.Drawing.Point(518, 649);
             this.btn54.Name = "btn54";
             this.btn54.Size = new System.Drawing.Size(107, 94);
@@ -369,7 +398,8 @@
             // 
             // btn53
             // 
-            this.btn53.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn53.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn53.Enabled = false;
             this.btn53.Location = new System.Drawing.Point(366, 649);
             this.btn53.Name = "btn53";
             this.btn53.Size = new System.Drawing.Size(107, 94);
@@ -378,7 +408,8 @@
             // 
             // btn52
             // 
-            this.btn52.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn52.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn52.Enabled = false;
             this.btn52.Location = new System.Drawing.Point(208, 649);
             this.btn52.Name = "btn52";
             this.btn52.Size = new System.Drawing.Size(107, 94);
@@ -387,7 +418,8 @@
             // 
             // btn51
             // 
-            this.btn51.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn51.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn51.Enabled = false;
             this.btn51.Location = new System.Drawing.Point(56, 649);
             this.btn51.Name = "btn51";
             this.btn51.Size = new System.Drawing.Size(107, 94);
@@ -396,7 +428,8 @@
             // 
             // btn66
             // 
-            this.btn66.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn66.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn66.Enabled = false;
             this.btn66.Location = new System.Drawing.Point(805, 783);
             this.btn66.Name = "btn66";
             this.btn66.Size = new System.Drawing.Size(107, 94);
@@ -405,7 +438,8 @@
             // 
             // btn65
             // 
-            this.btn65.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn65.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn65.Enabled = false;
             this.btn65.Location = new System.Drawing.Point(658, 783);
             this.btn65.Name = "btn65";
             this.btn65.Size = new System.Drawing.Size(107, 94);
@@ -414,7 +448,8 @@
             // 
             // btn64
             // 
-            this.btn64.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn64.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn64.Enabled = false;
             this.btn64.Location = new System.Drawing.Point(518, 783);
             this.btn64.Name = "btn64";
             this.btn64.Size = new System.Drawing.Size(107, 94);
@@ -423,7 +458,8 @@
             // 
             // btn63
             // 
-            this.btn63.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn63.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn63.Enabled = false;
             this.btn63.Location = new System.Drawing.Point(366, 783);
             this.btn63.Name = "btn63";
             this.btn63.Size = new System.Drawing.Size(107, 94);
@@ -432,7 +468,8 @@
             // 
             // btn62
             // 
-            this.btn62.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn62.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn62.Enabled = false;
             this.btn62.Location = new System.Drawing.Point(208, 783);
             this.btn62.Name = "btn62";
             this.btn62.Size = new System.Drawing.Size(107, 94);
@@ -441,18 +478,59 @@
             // 
             // btn61
             // 
-            this.btn61.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btn61.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn61.Enabled = false;
             this.btn61.Location = new System.Drawing.Point(56, 783);
             this.btn61.Name = "btn61";
             this.btn61.Size = new System.Drawing.Size(107, 94);
             this.btn61.TabIndex = 34;
             this.btn61.UseVisualStyleBackColor = false;
             // 
+            // lblTurn
+            // 
+            this.lblTurn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblTurn.AutoSize = true;
+            this.lblTurn.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTurn.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblTurn.Location = new System.Drawing.Point(424, 41);
+            this.lblTurn.Name = "lblTurn";
+            this.lblTurn.Size = new System.Drawing.Size(221, 33);
+            this.lblTurn.TabIndex = 42;
+            this.lblTurn.Text = "Turn Number:";
+            // 
+            // lblScore
+            // 
+            this.lblScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblScore.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblScore.Location = new System.Drawing.Point(726, 43);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(110, 33);
+            this.lblScore.TabIndex = 43;
+            this.lblScore.Text = "Score:";
+            // 
+            // lblStartToPlay
+            // 
+            this.lblStartToPlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblStartToPlay.AutoSize = true;
+            this.lblStartToPlay.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblStartToPlay.ForeColor = System.Drawing.Color.Red;
+            this.lblStartToPlay.Location = new System.Drawing.Point(366, 92);
+            this.lblStartToPlay.Name = "lblStartToPlay";
+            this.lblStartToPlay.Size = new System.Drawing.Size(269, 35);
+            this.lblStartToPlay.TabIndex = 44;
+            this.lblStartToPlay.Text = "Click Start To Play";
+            // 
             // MemoryGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 928);
+            this.Controls.Add(this.lblStartToPlay);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblTurn);
             this.Controls.Add(this.btn66);
             this.Controls.Add(this.btn65);
             this.Controls.Add(this.btn64);
@@ -489,7 +567,7 @@
             this.Controls.Add(this.btn13);
             this.Controls.Add(this.btn12);
             this.Controls.Add(this.btn11);
-            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblScoreNum);
             this.Controls.Add(this.lblTurnNumber);
             this.Controls.Add(this.btnNextTurn);
             this.Controls.Add(this.btnStart);
@@ -497,6 +575,7 @@
             this.Name = "MemoryGame";
             this.Text = "MemoryGame";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -505,7 +584,7 @@
         private Button btnStart;
         private Button btnNextTurn;
         private Label lblTurnNumber;
-        private Label lblScore;
+        private Label lblScoreNum;
         private Button btn11;
         private Button btn12;
         private Button btn13;
@@ -542,5 +621,8 @@
         private Button btn63;
         private Button btn62;
         private Button btn61;
+        private Label lblTurn;
+        private Label lblScore;
+        private Label lblStartToPlay;
     }
 }
