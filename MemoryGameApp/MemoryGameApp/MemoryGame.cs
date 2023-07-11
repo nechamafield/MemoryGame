@@ -51,11 +51,13 @@ namespace MemoryGameApp
 
         private void BtnNextTurn_Click(object? sender, EventArgs e)
         {
+
             if (sender is Button)
             {
-                lstbuttons.ForEach(b => b.Enabled = true);
                 DoTurn((Button)sender);
             }
+            //if 2 buttons were clicked (not steelblue) then should disable buttons and next turn should enable them
+
         }
 
         private void ClickedButtons(Button btn, Button btn1, Button btn2, Color c)
@@ -66,8 +68,14 @@ namespace MemoryGameApp
             }
         }
 
+        private void EnableButtons(bool enable)
+        {
+            lstbuttons.ForEach(b => b.Enabled = enable);
+        }
+
         private void DoTurn(Button btn)
         {
+            //lstbuttons.ForEach(b => b.Enabled = true);
             ClickedButtons(btn, btn33, btn56, Color.Tan);
             ClickedButtons(btn, btn53, btn11, Color.Sienna);
             ClickedButtons(btn, btn12, btn46, Color.Silver);
@@ -86,6 +94,11 @@ namespace MemoryGameApp
             ClickedButtons(btn, btn44, btn54, Color.Orange);
             ClickedButtons(btn, btn61, btn51, Color.MistyRose);
             ClickedButtons(btn, btn45, btn62, Color.Lime);
+            //lstbuttons.ForEach(b => b.Enabled = false);
+            if (lstbuttons.Count(b => b.BackColor != Color.LightSteelBlue) >= 2)
+            {
+                EnableButtons(false);
+            }
         }
 
         private void B_Click(object? sender, EventArgs e)
@@ -93,7 +106,6 @@ namespace MemoryGameApp
             if (sender is Button)
             {
                 DoTurn((Button)sender);
-                lstbuttons.ForEach(b => b.Enabled = false);
             }
         }
 
