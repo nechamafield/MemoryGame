@@ -25,46 +25,45 @@ namespace MemoryGameApp
             btnNextTurn.Click += BtnNextTurn_Click;
             lstbuttons.ForEach(b => b.Click += B_Click);
 
-            //lstmatchingsets = new()
-            //{
-            //    new(){btn33, btn56},
-            //    new(){btn53, btn11},
-            //    new(){btn12, btn46},
-            //    new(){btn13, btn66},
-            //    new(){btn14, btn42},
-            //    new(){btn15, btn64},
-            //    new(){btn16, btn21},
-            //    new(){btn22, btn55},
-            //    new(){btn23, btn52},
-            //    new(){btn24, btn41},
-            //    new(){btn25, btn26},
-            //    new(){btn31, btn36},
-            //    new(){btn32, btn43},
-            //    new(){btn34, btn65},
-            //    new(){btn35, btn63},
-            //    new(){btn44, btn54},
-            //    new(){btn61, btn51},
-            //    new(){btn45, btn62},
-            //};
+            lstmatchingsets = new()
+            {
+                new(){btn33, btn56},
+                new(){btn53, btn11},
+                new(){btn12, btn46},
+                new(){btn13, btn66},
+                new(){btn14, btn42},
+                new(){btn15, btn64},
+                new(){btn16, btn21},
+                new(){btn22, btn55},
+                new(){btn23, btn52},
+                new(){btn24, btn41},
+                new(){btn25, btn26},
+                new(){btn31, btn36},
+                new(){btn32, btn43},
+                new(){btn34, btn65},
+                new(){btn35, btn63},
+                new(){btn44, btn54},
+                new(){btn61, btn51},
+                new(){btn45, btn62},
+            };
 
+        }
+
+        private void NextTurn()
+        {
+            int n = 0;
+            bool bn = int.TryParse(lblTurnNumber.Text, out n);
+            int numturns = n + 1;
+            lblTurnNumber.Text = numturns.ToString();
+            //if (lstmatchingsets.FirstOrDefault(l => l.Count(b => b.BackColor == b.BackColor))
         }
 
         private void BtnNextTurn_Click(object? sender, EventArgs e)
         {
-
             if (sender is Button)
             {
                 DoTurn((Button)sender);
-            }
-            //if 2 buttons were clicked (not steelblue) then should disable buttons and next turn should enable them
-
-        }
-
-        private void ClickedButtons(Button btn, Button btn1, Button btn2, Color c)
-        {
-            if (btn == btn1 || btn == btn2)
-            {
-                btn.BackColor = c;
+                NextTurn();
             }
         }
 
@@ -73,9 +72,23 @@ namespace MemoryGameApp
             lstbuttons.ForEach(b => b.Enabled = enable);
         }
 
+        private void ClickedButtons(Button btn, Button btn1, Button btn2, Color c)
+        {
+            if (btn == btn1 || btn == btn2)
+            {
+                btn.BackColor = c;
+            }
+            if(btn1.BackColor == btn2.BackColor && btn1.BackColor != Color.LightSteelBlue && btn2.BackColor != Color.LightSteelBlue)
+            {
+                int n = 0;
+                bool bn = int.TryParse(lblScoreNum.Text, out n);
+                int scorenum = n + 1;
+                lblScoreNum.Text = scorenum.ToString();
+            }
+        }
+
         private void DoTurn(Button btn)
         {
-            //lstbuttons.ForEach(b => b.Enabled = true);
             ClickedButtons(btn, btn33, btn56, Color.Tan);
             ClickedButtons(btn, btn53, btn11, Color.Sienna);
             ClickedButtons(btn, btn12, btn46, Color.Silver);
@@ -94,7 +107,6 @@ namespace MemoryGameApp
             ClickedButtons(btn, btn44, btn54, Color.Orange);
             ClickedButtons(btn, btn61, btn51, Color.MistyRose);
             ClickedButtons(btn, btn45, btn62, Color.Lime);
-            //lstbuttons.ForEach(b => b.Enabled = false);
             if (lstbuttons.Count(b => b.BackColor != Color.LightSteelBlue) >= 2)
             {
                 EnableButtons(false);
@@ -113,6 +125,7 @@ namespace MemoryGameApp
         {
             lstbuttons.ForEach(b => b.Enabled = true);
             lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
+            btnNextTurn.Enabled = true;
             lblTurnNumber.Text = "0";
             lblScoreNum.Text = "0";
             lblStartToPlay.Text = "";
