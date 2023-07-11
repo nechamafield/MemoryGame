@@ -10,3 +10,7 @@ and checks if the colors match. If they match the score and the number of turns 
 they do not match only the number of turns will go up, while the score will remain the same.
 
 **THE FULL SPEC FOR THE GAME CAN BE FOUND IN THE MEMORY GAME REPOSITORY**
+![Memory_game (1)](https://github.com/nechamafield/MemoryGame/assets/108695166/c049ea5e-50cd-4f40-a0cc-2c076243843a)
+
+
+
