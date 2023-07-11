@@ -15,6 +15,7 @@ namespace MemoryGameApp
         List<Button> lstbuttons;
         List<List<Button>> lstmatchingsets;
         List<Color> lstcolor;
+
         enum MatchedEnum { Matched, NotMatched };
         MatchedEnum IfMatched = MatchedEnum.NotMatched;
 
@@ -86,18 +87,22 @@ namespace MemoryGameApp
 
         private void ClickedButtons(Button btn, Button btn1, Button btn2, Color c)
         {
+            var lstmatchedcolors = new List<Color> {};
             if (btn == btn1 || btn == btn2)
             {
                 btn.BackColor = c;
             }
             //every time click next turn the score goes up?
-            if (btn1.BackColor == btn2.BackColor && btn1.BackColor == c)//)
+            if (btn1.BackColor == btn2.BackColor && btn1.BackColor == c) // && lstmatchedcolors.Contains(btn1.BackColor))
             {
-                //var lst = Color.where
-                int n = 0;
-                bool bn = int.TryParse(lblScoreNum.Text, out n);
-                int scorenum = n + 1;
-                lblScoreNum.Text = scorenum.ToString();
+                lstmatchedcolors.Add(c);
+                if (lstmatchedcolors.Contains(btn1.BackColor) == true)
+                {
+                    int n = 0;
+                    bool bn = int.TryParse(lblScoreNum.Text, out n);
+                    int scorenum = n + 1;
+                    lblScoreNum.Text = scorenum.ToString();
+                }
                 //add c to list alreadymatched
             }
         }
