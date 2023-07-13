@@ -155,8 +155,8 @@ namespace MemoryGameApp
         private void DoTurn(Button btn)
         {
             SetButtons(btn);
-            Color c = GetRandomBackColor();
-            ClickedButtons(btn, btn1test, btn2test, c);
+            //Color c = GetRandomBackColor();
+            ClickedButtons(btn, btn1test, btn2test); //, c);
             ReSetBtns();
 
             //ClickedButtons(btn, btn33, btn56, lstcolor[0]);
@@ -184,21 +184,18 @@ namespace MemoryGameApp
         }
 
 
-        private void ClickedButtons(Button btn, Button btn1, Button btn2, Color c)
-        {;
+        private void ClickedButtons(Button btn, Button btn1, Button btn2)//, Color c)
+        {
             ////////////////////////////////
             //YF work
 
             //do all matching work btwn set and reset buttons
-            c = GetRandomBackColor();
+            
             foreach (List<Button> sublist in lstmatchingsets)
             {
+                var c = GetRandomBackColor();
                 ///////im trying to make the buttons in each sublist be the same random color
                 sublist.ForEach(b => b.BackColor = c);
-                //foreach (Button b in sublist)
-                //{
-                //    b.BackColor = c;
-                //}
 
                 if (sublist.Contains(btn1test) == true && sublist.Contains(btn2test) == true)
                 //if (btn1test.BackColor == btn2test.BackColor)
@@ -213,10 +210,10 @@ namespace MemoryGameApp
                 }
             }
             //if btn1test and btn2test is a set in matchedsets then color should be the same random color from lstcolor
-            if (btn == btn1test || btn == btn2test)
-            {
-                btn.BackColor = c;
-            }
+            //if (btn == btn1test || btn == btn2test)
+            //{
+            //    btn.BackColor = c;
+            //}
 
             //AddOneScore();
 
