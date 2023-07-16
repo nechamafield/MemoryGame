@@ -39,7 +39,7 @@ namespace MemoryGameApp
             lstcolor = new() { Color.Tan, Color.Sienna, Color.Silver , Color.PowderBlue, Color.Pink, Color.OliveDrab, Color.Peru, Color.Salmon, Color.RosyBrown,
                                 Color.Tomato,Color.Violet ,Color.Yellow ,Color.SpringGreen ,Color.SkyBlue ,Color.Purple ,Color.Orange,Color.MistyRose ,Color.Lime };
             btnStart.Click += BtnStart_Click;
-            btnNextTurn.Click += BtnNextTurn_Click;
+            bNextTurn.Click += BNextTurn_Click;
             lstbuttons.ForEach(b => b.Click += B_Click);
 
             lstmatchingsets = new()
@@ -72,22 +72,22 @@ namespace MemoryGameApp
 
         private void NextTurn(Button btn)
         {
-            DoTurn(btn);
             EnableButtons(true);
             int n = 0;
             bool bn = int.TryParse(lblTurnNumber.Text, out n);
             int numturns = n + 1;
             lblTurnNumber.Text = numturns.ToString();
+            ReSetBtns();
+            DoTurn(btn); //- crashing cuz its taking btnnextturn as the button and not the ones clicked afterwards.
         }
 
-        private void BtnNextTurn_Click(object? sender, EventArgs e)
+        private void BNextTurn_Click(object? sender, EventArgs e)
         {
-            if (sender is Button)
-            {
-                NextTurn((Button)sender);
-                //ReSetBtns();
-                //AddOneScore();
-            }
+            //if (sender is Button)
+            //{
+            //lstbuttons.ForEach(b => b.Click += B_Click);
+            NextTurn((Button)sender);
+            //}
         }
 
         private void EnableButtons(bool enable)
@@ -95,15 +95,6 @@ namespace MemoryGameApp
             lstbuttons.ForEach(b => b.Enabled = enable);
         }
 
-        //private void addonescore()
-        //{
-        //    int n = 0;
-        //    bool bn = int.TryParse(lblScoreNum.Text, out n);
-        //    int scorenum = n + 1;
-        //    lblScoreNum.Text = scorenum.ToString();
-        //}
-
-        //makes score quadruple
         private void AddOneScore()
         {
             int n = 0;
@@ -131,29 +122,33 @@ namespace MemoryGameApp
 
                 btn2test = btn;
             }
-            else
+            else 
             {
                 btn1test = btn;
             }
 
         }
 
-        //public void ReSetBtns()
-        //{
-        //    btn1test = new();
-        //    btn2test = new();
-        //}
+        public void ReSetBtns()
+        {
+            btn1test = new();
+            btn2test = new();
+        }
 
         private void DoTurn(Button btn)
         {
+            if (btn.Name.Contains("btn"))
+            {
+
+           
             SetButtons(btn);
 
-            ClickedButtons(btn);  //, btn1test, btn2test);
-            //ReSetBtns(); - causes it to keep putting clicked btn as btn1test cuz its resetting it to ""
+            ClickedButtons(btn);
 
-            if (lstbuttons.Count(b => b.BackColor != Color.LightSteelBlue) >= 2)// && lstmatchingsets.Contains(btn1.BackColor))
+            if (lstbuttons.Count(b => b.BackColor != Color.LightSteelBlue) >= 2)// - making issues cuz after 1st turn there each turn only lets 1 click cuz its more than 2
             {
                 EnableButtons(false);
+            }
             }
         }
 
@@ -170,34 +165,13 @@ namespace MemoryGameApp
 
             if (btn1test.BackColor == btn2test.BackColor)
             {
-               AddOneScore();
+                AddOneScore();
             }
             else
             {
                 lblScoreNum.Text = lblScoreNum.Text;
             }
         }
-
-
-        //if btn1test and btn2test is a set in matchedsets then color should be the same random color from lstcolor
-        //if (btn == btn1test || btn == btn2test)
-        //{
-        //    btn.BackColor = c;
-        //}
-
-        //AddOneScore();
-
-
-
-        ////////////////////////////
-        //if (btn == btn1 || btn == btn2)
-        //{
-        //    btn.BackColor = c;
-        //}
-
-
-
-        //}
 
         private void B_Click(object? sender, EventArgs e)
         {
@@ -211,7 +185,7 @@ namespace MemoryGameApp
         {
             lstbuttons.ForEach(b => b.Enabled = true);
             lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
-            btnNextTurn.Enabled = true;
+            bNextTurn.Enabled = true;
             lblTurnNumber.Text = "0";
             lblScoreNum.Text = "0";
             lblStartToPlay.Text = "";

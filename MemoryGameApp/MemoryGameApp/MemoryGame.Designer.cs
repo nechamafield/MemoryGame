@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnStart = new System.Windows.Forms.Button();
-            this.btnNextTurn = new System.Windows.Forms.Button();
+            this.bNextTurn = new System.Windows.Forms.Button();
             this.lblTurnNumber = new System.Windows.Forms.Label();
             this.lblScoreNum = new System.Windows.Forms.Label();
             this.btn11 = new System.Windows.Forms.Button();
@@ -86,19 +86,19 @@
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = false;
             // 
-            // btnNextTurn
+            // bNextTurn
             // 
-            this.btnNextTurn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnNextTurn.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnNextTurn.Enabled = false;
-            this.btnNextTurn.Font = new System.Drawing.Font("Snap ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnNextTurn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnNextTurn.Location = new System.Drawing.Point(232, 24);
-            this.btnNextTurn.Name = "btnNextTurn";
-            this.btnNextTurn.Size = new System.Drawing.Size(175, 65);
-            this.btnNextTurn.TabIndex = 1;
-            this.btnNextTurn.Text = "Next Turn";
-            this.btnNextTurn.UseVisualStyleBackColor = false;
+            this.bNextTurn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bNextTurn.BackColor = System.Drawing.Color.CadetBlue;
+            this.bNextTurn.Enabled = false;
+            this.bNextTurn.Font = new System.Drawing.Font("Snap ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bNextTurn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.bNextTurn.Location = new System.Drawing.Point(232, 24);
+            this.bNextTurn.Name = "bNextTurn";
+            this.bNextTurn.Size = new System.Drawing.Size(175, 65);
+            this.bNextTurn.TabIndex = 1;
+            this.bNextTurn.Text = "Next Turn";
+            this.bNextTurn.UseVisualStyleBackColor = false;
             // 
             // lblTurnNumber
             // 
@@ -569,7 +569,7 @@
             this.Controls.Add(this.btn11);
             this.Controls.Add(this.lblScoreNum);
             this.Controls.Add(this.lblTurnNumber);
-            this.Controls.Add(this.btnNextTurn);
+            this.Controls.Add(this.bNextTurn);
             this.Controls.Add(this.btnStart);
             this.Font = new System.Drawing.Font("Tempus Sans ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "MemoryGame";
@@ -582,7 +582,7 @@
         #endregion
 
         private Button btnStart;
-        private Button btnNextTurn;
+        private Button bNextTurn;
         private Label lblTurnNumber;
         private Label lblScoreNum;
         private Button btn11;
