@@ -151,8 +151,7 @@ namespace MemoryGameApp
             {
                 EnableButtons(false);
             }
-            if (btn1test == btn11 && btn2test == btn53)
-            //if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
+            if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
             {
                 Winner();
             }
