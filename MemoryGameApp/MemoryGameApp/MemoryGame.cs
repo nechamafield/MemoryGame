@@ -77,17 +77,19 @@ namespace MemoryGameApp
             bool bn = int.TryParse(lblTurnNumber.Text, out n);
             int numturns = n + 1;
             lblTurnNumber.Text = numturns.ToString();
-            ReSetBtns();
-            DoTurn(btn); //- crashing cuz its taking btnnextturn as the button and not the ones clicked afterwards.
+            if (btn.Name.Contains("btn") == false)
+            {
+                ReSetBtns();
+            }
+            if (btn.Name.Contains("btn"))
+            {
+                DoTurn(btn); 
+            }   
         }
 
         private void BNextTurn_Click(object? sender, EventArgs e)
         {
-            //if (sender is Button)
-            //{
-            //lstbuttons.ForEach(b => b.Click += B_Click);
             NextTurn((Button)sender);
-            //}
         }
 
         private void EnableButtons(bool enable)
@@ -119,7 +121,6 @@ namespace MemoryGameApp
         {
             if (btn1test.Name.Contains("btn")) //if its a card
             {
-
                 btn2test = btn;
             }
             else 
@@ -137,27 +138,19 @@ namespace MemoryGameApp
 
         private void DoTurn(Button btn)
         {
-            if (btn.Name.Contains("btn"))
-            {
-
-           
             SetButtons(btn);
-
             ClickedButtons(btn);
-
-            if (lstbuttons.Count(b => b.BackColor != Color.LightSteelBlue) >= 2)// - making issues cuz after 1st turn there each turn only lets 1 click cuz its more than 2
+            // if there are >= 2 btns that the backcolors dont match and are not lightsteelblue
+            if (btn2test.Name != "")
+            //if (lstbuttons.Count(b => b.BackColor != Color.LightSteelBlue) >= 2)// - making issues cuz after 1st turn there each turn only lets 1 click cuz its more than 2
             {
                 EnableButtons(false);
-            }
             }
         }
 
 
-        private void ClickedButtons(Button btn)  //, Button btn1, Button btn2)
+        private void ClickedButtons(Button btn) 
         {
-            ////////////////////////////////
-            //do all matching work btwn set and reset buttons
-
             if (btn == btn1test || btn == btn2test)
             {
                 btn.BackColor = (Color)btn.Tag;
