@@ -32,16 +32,25 @@ namespace MemoryGameApp
             bStart.Click += BStart_Click;
             bNextTurn.Click += BNextTurn_Click;
             lstbuttons.ForEach(b => b.Click += B_Click);
-            //lstRemainingBtns = lstbuttons.ToList(); 
 
-            //make sure that when you remove something from lstRemaining it stays in lstbuttons
+            //now, the matching sets are hard coded in.
+            //should really have a list of all buttons, and another list of buttons remaining - (that are not yet in a set)
+            //lstRemainingBtns = lstbuttons.ToList()  
+            //should get a random color and assign 2 random buttons from the lstButtonsRemaining
+            //then, it should remove those buttons from lstButtonRemaining, but make sure that they are not removed from lstButtons.
+            // the way to see if there is a winner should be to see if the colors match - not if the buttons match in the set
+                    //private void AssignColors()
+                    // {
+                    //  while (lstRemainingBtns.Count > 1)
+                    //  {
+                    //      Color c = GetRandomBackColor();
+                    //      assign 2 random btns from lstButtonsRemaining to that color
+                    //      remove those buttons from lstRemainingButtons
 
 
 
             lstmatchingsets = new()
             {
-                //new(){make a list where the btns that were not yet matched go, then take 2 random btns from that list}
- //               new(){SetColors(), SetColors()},
                 new(){btn33, btn56},
                 new(){btn53, btn11},
                 new(){btn12, btn46},
@@ -66,22 +75,6 @@ namespace MemoryGameApp
                 var c = GetRandomBackColor();
                 sublist.ForEach(b => b.Tag = c);
             }
-//        }
-//        private void AssignColors()
-//        {
-//            while (lstRemainingBtns.Count > 1)
-//            {
-//                //get color
-//                Color c = GetRandomBackColor();
-//            //assign 2 btns to that color
-////lstRemainingBtns
-
-//            //remove from list 
-//            //loop again
-
-
-//            }
-
         }
 
         private void NextTurn(Button btn)
@@ -195,19 +188,13 @@ namespace MemoryGameApp
             }
         }
 
-        //randomly assign colors
-        //check if colors match --not if buttons are a preexsisting match
-
-
-
-
         private void ClickedButtons(Button btn)
         {
             bNextTurn.Enabled = false;
             if (btn == btn1test || btn == btn2test)
             {
                 btn.BackColor = (Color)btn.Tag;
-                //btn.Text = btn.Tag.ToString();
+                //btn.Text = btn.Tag.ToString(); - will write the color name on the button
             }
 
             if (btn1test.BackColor == btn2test.BackColor)
