@@ -38,6 +38,7 @@ namespace MemoryGameApp
 
             lstmatchingsets = new()
             {
+                //new(){make a lsit where the btns that were not yet matched go, then take 2 random btns from that list}
                 new(){btn33, btn56},
                 new(){btn53, btn11},
                 new(){btn12, btn46},
@@ -66,10 +67,15 @@ namespace MemoryGameApp
 
         private void NextTurn(Button btn)
         {
+            lblStartToPlay.Text = "";
+            bNextTurn.Enabled = false;
             if (btn1test.BackColor != btn2test.BackColor)
             {
-                btn1test.BackColor = Color.LightSteelBlue;
-                btn2test.BackColor = Color.LightSteelBlue;
+                ClearButtons(Color.LightSteelBlue);
+            }
+            else if (btn1test.BackColor == btn2test.BackColor)
+            {
+                ClearButtons(Color.Empty);
             }
             EnableButtons(true);
             int n = 0;
@@ -129,6 +135,14 @@ namespace MemoryGameApp
 
         }
 
+        private void ClearButtons(Color c)
+        {
+            btn1test.BackColor = c;
+            btn2test.BackColor = c;
+            btn1test.Text = "";
+            btn2test.Text = "";
+        }
+
         public void ReSetBtns()
         {
             btn1test = new();
@@ -137,9 +151,10 @@ namespace MemoryGameApp
 
         private void Winner()
         {
+            ClearButtons(Color.Empty);
             lblWinner.BringToFront();
             lblWinner.BackColor = Color.Black;
-            lblWinner.Text = "Game Over: " + lblTurnNumber.Text + " Tries!!";
+            lblWinner.Text = "CONGRATS: " + lblTurnNumber.Text + " TRIES!!";
             bNextTurn.Enabled = false;
         }
 
@@ -150,8 +165,10 @@ namespace MemoryGameApp
             if (btn2test.Name != "")
             {
                 EnableButtons(false);
+                bNextTurn.Enabled = true;
             }
-            if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
+            if (btn1test == btn11 && btn2test == btn53)
+            //if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
             {
                 Winner();
             }
@@ -160,13 +177,16 @@ namespace MemoryGameApp
 
         private void ClickedButtons(Button btn)
         {
+            bNextTurn.Enabled = false;
             if (btn == btn1test || btn == btn2test)
             {
                 btn.BackColor = (Color)btn.Tag;
+                btn.Text = btn.Tag.ToString();
             }
 
             if (btn1test.BackColor == btn2test.BackColor)
             {
+                lblStartToPlay.Text = "GREAT JOB!";
                 AddOneScore();
             }
             else
@@ -180,12 +200,13 @@ namespace MemoryGameApp
             lblWinner.SendToBack();
             lblWinner.Text = "";
             lblWinner.BackColor = Color.Transparent;
-            lstbuttons.ForEach(b => b.Enabled = true);
+            EnableButtons(true);
             lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
             bNextTurn.Enabled = true;
             lblTurnNumber.Text = "0";
             lblScoreNum.Text = "0";
             lblStartToPlay.Text = "";
+
         }
 
         private void B_Click(object? sender, EventArgs e)
@@ -198,8 +219,18 @@ namespace MemoryGameApp
 
         private void BStart_Click(object? sender, EventArgs e)
         {
-            Start();
-            ReSetBtns();
+            if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
+            {
+                Start();
+                ReSetBtns();
+            }
+            else 
+            {
+                ClearButtons(Color.LightSteelBlue);
+                lstbuttons.ForEach(b => b.Text = "");
+                lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
+                EnableButtons(false);
+            }
         }
 
     }
