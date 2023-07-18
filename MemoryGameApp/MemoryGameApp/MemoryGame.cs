@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,18 +17,13 @@ namespace MemoryGameApp
     {
         List<Button> lstbuttons;
         List<List<Button>> lstmatchingsets;
+        List<Button> lstRemainingBtns = new();
+
+       
 
         Button btn1test = new();
         Button btn2test = new();
 
-        // dictionary<String, Color> colorMatches
-        // private void SetColors{
-        // foreach btn in lstbuttons
-        //      color rnd = GetRandomColor();
-        //      colorMatches.Add(btn.Name, color)
-        //      otherBtn = .Where 
-
-        //}
         public MemoryGame()
         {
             InitializeComponent();
@@ -35,10 +32,16 @@ namespace MemoryGameApp
             bStart.Click += BStart_Click;
             bNextTurn.Click += BNextTurn_Click;
             lstbuttons.ForEach(b => b.Click += B_Click);
+            //lstRemainingBtns = lstbuttons.ToList(); 
+
+            //make sure that when you remove something from lstRemaining it stays in lstbuttons
+
+
 
             lstmatchingsets = new()
             {
-                //new(){make a lsit where the btns that were not yet matched go, then take 2 random btns from that list}
+                //new(){make a list where the btns that were not yet matched go, then take 2 random btns from that list}
+ //               new(){SetColors(), SetColors()},
                 new(){btn33, btn56},
                 new(){btn53, btn11},
                 new(){btn12, btn46},
@@ -63,6 +66,22 @@ namespace MemoryGameApp
                 var c = GetRandomBackColor();
                 sublist.ForEach(b => b.Tag = c);
             }
+//        }
+//        private void AssignColors()
+//        {
+//            while (lstRemainingBtns.Count > 1)
+//            {
+//                //get color
+//                Color c = GetRandomBackColor();
+//            //assign 2 btns to that color
+////lstRemainingBtns
+
+//            //remove from list 
+//            //loop again
+
+
+//            }
+
         }
 
         private void NextTurn(Button btn)
@@ -119,7 +138,10 @@ namespace MemoryGameApp
 
         private Color GetRandomBackColor()
         {
+
+
             return GetRandomBackColor(0, 256, 0, 256, 0, 256);
+
         }
 
         public void SetButtons(Button btn)
@@ -167,12 +189,16 @@ namespace MemoryGameApp
                 EnableButtons(false);
                 bNextTurn.Enabled = true;
             }
-            if (btn1test == btn11 && btn2test == btn53)
-            //if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
+            if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
             {
                 Winner();
             }
         }
+
+        //randomly assign colors
+        //check if colors match --not if buttons are a preexsisting match
+
+
 
 
         private void ClickedButtons(Button btn)
@@ -181,7 +207,7 @@ namespace MemoryGameApp
             if (btn == btn1test || btn == btn2test)
             {
                 btn.BackColor = (Color)btn.Tag;
-                btn.Text = btn.Tag.ToString();
+                //btn.Text = btn.Tag.ToString();
             }
 
             if (btn1test.BackColor == btn2test.BackColor)
@@ -224,7 +250,7 @@ namespace MemoryGameApp
                 Start();
                 ReSetBtns();
             }
-            else 
+            else
             {
                 ClearButtons(Color.LightSteelBlue);
                 lstbuttons.ForEach(b => b.Text = "");
