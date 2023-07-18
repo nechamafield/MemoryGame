@@ -62,16 +62,18 @@
             this.btn53 = new System.Windows.Forms.Button();
             this.btn52 = new System.Windows.Forms.Button();
             this.btn51 = new System.Windows.Forms.Button();
-            this.btn66 = new System.Windows.Forms.Button();
-            this.btn65 = new System.Windows.Forms.Button();
-            this.btn64 = new System.Windows.Forms.Button();
-            this.btn63 = new System.Windows.Forms.Button();
-            this.btn62 = new System.Windows.Forms.Button();
-            this.btn61 = new System.Windows.Forms.Button();
             this.lblTurn = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.lblStartToPlay = new System.Windows.Forms.Label();
             this.lblWinner = new System.Windows.Forms.Label();
+            this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.btn61 = new System.Windows.Forms.Button();
+            this.btn62 = new System.Windows.Forms.Button();
+            this.btn63 = new System.Windows.Forms.Button();
+            this.btn64 = new System.Windows.Forms.Button();
+            this.btn65 = new System.Windows.Forms.Button();
+            this.btn66 = new System.Windows.Forms.Button();
+            this.tblMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // bStart
@@ -80,7 +82,7 @@
             this.bStart.BackColor = System.Drawing.Color.CadetBlue;
             this.bStart.Font = new System.Drawing.Font("Snap ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bStart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bStart.Location = new System.Drawing.Point(35, 24);
+            this.bStart.Location = new System.Drawing.Point(-5, 26);
             this.bStart.Name = "bStart";
             this.bStart.Size = new System.Drawing.Size(169, 65);
             this.bStart.TabIndex = 0;
@@ -94,7 +96,7 @@
             this.bNextTurn.Enabled = false;
             this.bNextTurn.Font = new System.Drawing.Font("Snap ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bNextTurn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bNextTurn.Location = new System.Drawing.Point(232, 24);
+            this.bNextTurn.Location = new System.Drawing.Point(187, 23);
             this.bNextTurn.Name = "bNextTurn";
             this.bNextTurn.Size = new System.Drawing.Size(175, 65);
             this.bNextTurn.TabIndex = 1;
@@ -106,7 +108,7 @@
             this.lblTurnNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTurnNumber.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTurnNumber.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblTurnNumber.Location = new System.Drawing.Point(651, 37);
+            this.lblTurnNumber.Location = new System.Drawing.Point(616, 18);
             this.lblTurnNumber.Name = "lblTurnNumber";
             this.lblTurnNumber.Size = new System.Drawing.Size(69, 41);
             this.lblTurnNumber.TabIndex = 3;
@@ -117,7 +119,7 @@
             this.lblScoreNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblScoreNum.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblScoreNum.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblScoreNum.Location = new System.Drawing.Point(835, 39);
+            this.lblScoreNum.Location = new System.Drawing.Point(815, 39);
             this.lblScoreNum.Name = "lblScoreNum";
             this.lblScoreNum.Size = new System.Drawing.Size(77, 39);
             this.lblScoreNum.TabIndex = 5;
@@ -126,80 +128,88 @@
             // btn11
             // 
             this.btn11.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn11.Enabled = false;
-            this.btn11.Location = new System.Drawing.Point(56, 142);
+            this.btn11.Location = new System.Drawing.Point(3, 113);
             this.btn11.Name = "btn11";
-            this.btn11.Size = new System.Drawing.Size(107, 94);
+            this.btn11.Size = new System.Drawing.Size(148, 104);
             this.btn11.TabIndex = 7;
             this.btn11.UseVisualStyleBackColor = false;
             // 
             // btn12
             // 
             this.btn12.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn12.Enabled = false;
-            this.btn12.Location = new System.Drawing.Point(208, 142);
+            this.btn12.Location = new System.Drawing.Point(157, 113);
             this.btn12.Name = "btn12";
-            this.btn12.Size = new System.Drawing.Size(107, 94);
+            this.btn12.Size = new System.Drawing.Size(148, 104);
             this.btn12.TabIndex = 8;
             this.btn12.UseVisualStyleBackColor = false;
             // 
             // btn13
             // 
             this.btn13.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn13.Enabled = false;
-            this.btn13.Location = new System.Drawing.Point(366, 142);
+            this.btn13.Location = new System.Drawing.Point(311, 113);
             this.btn13.Name = "btn13";
-            this.btn13.Size = new System.Drawing.Size(107, 94);
+            this.btn13.Size = new System.Drawing.Size(148, 104);
             this.btn13.TabIndex = 9;
             this.btn13.UseVisualStyleBackColor = false;
             // 
             // btn14
             // 
             this.btn14.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn14.Enabled = false;
-            this.btn14.Location = new System.Drawing.Point(518, 142);
+            this.btn14.Location = new System.Drawing.Point(465, 113);
             this.btn14.Name = "btn14";
-            this.btn14.Size = new System.Drawing.Size(107, 94);
+            this.btn14.Size = new System.Drawing.Size(148, 104);
             this.btn14.TabIndex = 10;
             this.btn14.UseVisualStyleBackColor = false;
             // 
             // btn15
             // 
             this.btn15.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn15.Enabled = false;
-            this.btn15.Location = new System.Drawing.Point(658, 142);
+            this.btn15.Location = new System.Drawing.Point(619, 113);
             this.btn15.Name = "btn15";
-            this.btn15.Size = new System.Drawing.Size(107, 94);
+            this.btn15.Size = new System.Drawing.Size(148, 104);
             this.btn15.TabIndex = 11;
             this.btn15.UseVisualStyleBackColor = false;
             // 
             // btn16
             // 
             this.btn16.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn16.Enabled = false;
-            this.btn16.Location = new System.Drawing.Point(805, 142);
+            this.btn16.Location = new System.Drawing.Point(773, 113);
             this.btn16.Name = "btn16";
-            this.btn16.Size = new System.Drawing.Size(107, 94);
+            this.btn16.Size = new System.Drawing.Size(152, 104);
             this.btn16.TabIndex = 12;
             this.btn16.UseVisualStyleBackColor = false;
             // 
             // btn26
             // 
             this.btn26.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn26.Enabled = false;
-            this.btn26.Location = new System.Drawing.Point(805, 267);
+            this.btn26.Location = new System.Drawing.Point(773, 223);
             this.btn26.Name = "btn26";
-            this.btn26.Size = new System.Drawing.Size(107, 94);
+            this.btn26.Size = new System.Drawing.Size(152, 104);
             this.btn26.TabIndex = 18;
             this.btn26.UseVisualStyleBackColor = false;
             // 
             // btn25
             // 
             this.btn25.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn25.Enabled = false;
-            this.btn25.Location = new System.Drawing.Point(658, 267);
+            this.btn25.Location = new System.Drawing.Point(619, 223);
             this.btn25.Name = "btn25";
-            this.btn25.Size = new System.Drawing.Size(107, 94);
+            this.btn25.Size = new System.Drawing.Size(148, 104);
             this.btn25.TabIndex = 17;
             this.btn25.UseVisualStyleBackColor = false;
             // 
@@ -207,10 +217,11 @@
             // 
             this.btn24.AccessibleDescription = "btn10";
             this.btn24.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn24.Enabled = false;
-            this.btn24.Location = new System.Drawing.Point(518, 267);
+            this.btn24.Location = new System.Drawing.Point(465, 223);
             this.btn24.Name = "btn24";
-            this.btn24.Size = new System.Drawing.Size(107, 94);
+            this.btn24.Size = new System.Drawing.Size(148, 104);
             this.btn24.TabIndex = 16;
             this.btn24.UseVisualStyleBackColor = false;
             // 
@@ -218,10 +229,11 @@
             // 
             this.btn23.AccessibleDescription = "btn9";
             this.btn23.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn23.Enabled = false;
-            this.btn23.Location = new System.Drawing.Point(366, 267);
+            this.btn23.Location = new System.Drawing.Point(311, 223);
             this.btn23.Name = "btn23";
-            this.btn23.Size = new System.Drawing.Size(107, 94);
+            this.btn23.Size = new System.Drawing.Size(148, 104);
             this.btn23.TabIndex = 15;
             this.btn23.UseVisualStyleBackColor = false;
             // 
@@ -229,10 +241,11 @@
             // 
             this.btn22.AccessibleDescription = "btn8";
             this.btn22.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn22.Enabled = false;
-            this.btn22.Location = new System.Drawing.Point(208, 267);
+            this.btn22.Location = new System.Drawing.Point(157, 223);
             this.btn22.Name = "btn22";
-            this.btn22.Size = new System.Drawing.Size(107, 94);
+            this.btn22.Size = new System.Drawing.Size(148, 104);
             this.btn22.TabIndex = 14;
             this.btn22.UseVisualStyleBackColor = false;
             // 
@@ -240,252 +253,211 @@
             // 
             this.btn21.AccessibleDescription = "btn7";
             this.btn21.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn21.Enabled = false;
-            this.btn21.Location = new System.Drawing.Point(56, 267);
+            this.btn21.Location = new System.Drawing.Point(3, 223);
             this.btn21.Name = "btn21";
-            this.btn21.Size = new System.Drawing.Size(107, 94);
+            this.btn21.Size = new System.Drawing.Size(148, 104);
             this.btn21.TabIndex = 13;
             this.btn21.UseVisualStyleBackColor = false;
             // 
             // btn36
             // 
             this.btn36.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn36.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn36.Enabled = false;
-            this.btn36.Location = new System.Drawing.Point(805, 393);
+            this.btn36.Location = new System.Drawing.Point(773, 333);
             this.btn36.Name = "btn36";
-            this.btn36.Size = new System.Drawing.Size(107, 94);
+            this.btn36.Size = new System.Drawing.Size(152, 104);
             this.btn36.TabIndex = 24;
             this.btn36.UseVisualStyleBackColor = false;
             // 
             // btn35
             // 
             this.btn35.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn35.Enabled = false;
-            this.btn35.Location = new System.Drawing.Point(658, 393);
+            this.btn35.Location = new System.Drawing.Point(619, 333);
             this.btn35.Name = "btn35";
-            this.btn35.Size = new System.Drawing.Size(107, 94);
+            this.btn35.Size = new System.Drawing.Size(148, 104);
             this.btn35.TabIndex = 23;
             this.btn35.UseVisualStyleBackColor = false;
             // 
             // btn34
             // 
             this.btn34.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn34.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn34.Enabled = false;
-            this.btn34.Location = new System.Drawing.Point(518, 393);
+            this.btn34.Location = new System.Drawing.Point(465, 333);
             this.btn34.Name = "btn34";
-            this.btn34.Size = new System.Drawing.Size(107, 94);
+            this.btn34.Size = new System.Drawing.Size(148, 104);
             this.btn34.TabIndex = 22;
             this.btn34.UseVisualStyleBackColor = false;
             // 
             // btn33
             // 
             this.btn33.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn33.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn33.Enabled = false;
-            this.btn33.Location = new System.Drawing.Point(366, 393);
+            this.btn33.Location = new System.Drawing.Point(311, 333);
             this.btn33.Name = "btn33";
-            this.btn33.Size = new System.Drawing.Size(107, 94);
+            this.btn33.Size = new System.Drawing.Size(148, 104);
             this.btn33.TabIndex = 21;
             this.btn33.UseVisualStyleBackColor = false;
             // 
             // btn32
             // 
             this.btn32.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn32.Enabled = false;
-            this.btn32.Location = new System.Drawing.Point(208, 393);
+            this.btn32.Location = new System.Drawing.Point(157, 333);
             this.btn32.Name = "btn32";
-            this.btn32.Size = new System.Drawing.Size(107, 94);
+            this.btn32.Size = new System.Drawing.Size(148, 104);
             this.btn32.TabIndex = 20;
             this.btn32.UseVisualStyleBackColor = false;
             // 
             // btn31
             // 
             this.btn31.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn31.Enabled = false;
-            this.btn31.Location = new System.Drawing.Point(56, 393);
+            this.btn31.Location = new System.Drawing.Point(3, 333);
             this.btn31.Name = "btn31";
-            this.btn31.Size = new System.Drawing.Size(107, 94);
+            this.btn31.Size = new System.Drawing.Size(148, 104);
             this.btn31.TabIndex = 19;
             this.btn31.UseVisualStyleBackColor = false;
             // 
             // btn46
             // 
             this.btn46.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn46.Enabled = false;
-            this.btn46.Location = new System.Drawing.Point(805, 516);
+            this.btn46.Location = new System.Drawing.Point(773, 443);
             this.btn46.Name = "btn46";
-            this.btn46.Size = new System.Drawing.Size(107, 94);
+            this.btn46.Size = new System.Drawing.Size(152, 104);
             this.btn46.TabIndex = 30;
             this.btn46.UseVisualStyleBackColor = false;
             // 
             // btn45
             // 
             this.btn45.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn45.Enabled = false;
-            this.btn45.Location = new System.Drawing.Point(658, 516);
+            this.btn45.Location = new System.Drawing.Point(619, 443);
             this.btn45.Name = "btn45";
-            this.btn45.Size = new System.Drawing.Size(107, 94);
+            this.btn45.Size = new System.Drawing.Size(148, 104);
             this.btn45.TabIndex = 29;
             this.btn45.UseVisualStyleBackColor = false;
             // 
             // btn44
             // 
             this.btn44.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn44.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn44.Enabled = false;
-            this.btn44.Location = new System.Drawing.Point(518, 516);
+            this.btn44.Location = new System.Drawing.Point(465, 443);
             this.btn44.Name = "btn44";
-            this.btn44.Size = new System.Drawing.Size(107, 94);
+            this.btn44.Size = new System.Drawing.Size(148, 104);
             this.btn44.TabIndex = 28;
             this.btn44.UseVisualStyleBackColor = false;
             // 
             // btn43
             // 
             this.btn43.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn43.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn43.Enabled = false;
-            this.btn43.Location = new System.Drawing.Point(366, 516);
+            this.btn43.Location = new System.Drawing.Point(311, 443);
             this.btn43.Name = "btn43";
-            this.btn43.Size = new System.Drawing.Size(107, 94);
+            this.btn43.Size = new System.Drawing.Size(148, 104);
             this.btn43.TabIndex = 27;
             this.btn43.UseVisualStyleBackColor = false;
             // 
             // btn42
             // 
             this.btn42.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn42.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn42.Enabled = false;
-            this.btn42.Location = new System.Drawing.Point(208, 516);
+            this.btn42.Location = new System.Drawing.Point(157, 443);
             this.btn42.Name = "btn42";
-            this.btn42.Size = new System.Drawing.Size(107, 94);
+            this.btn42.Size = new System.Drawing.Size(148, 104);
             this.btn42.TabIndex = 26;
             this.btn42.UseVisualStyleBackColor = false;
             // 
             // btn41
             // 
             this.btn41.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn41.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn41.Enabled = false;
-            this.btn41.Location = new System.Drawing.Point(56, 516);
+            this.btn41.Location = new System.Drawing.Point(3, 443);
             this.btn41.Name = "btn41";
-            this.btn41.Size = new System.Drawing.Size(107, 94);
+            this.btn41.Size = new System.Drawing.Size(148, 104);
             this.btn41.TabIndex = 25;
             this.btn41.UseVisualStyleBackColor = false;
             // 
             // btn56
             // 
             this.btn56.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn56.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn56.Enabled = false;
-            this.btn56.Location = new System.Drawing.Point(805, 649);
+            this.btn56.Location = new System.Drawing.Point(773, 663);
             this.btn56.Name = "btn56";
-            this.btn56.Size = new System.Drawing.Size(107, 94);
+            this.btn56.Size = new System.Drawing.Size(152, 104);
             this.btn56.TabIndex = 36;
             this.btn56.UseVisualStyleBackColor = false;
             // 
             // btn55
             // 
             this.btn55.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn55.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn55.Enabled = false;
-            this.btn55.Location = new System.Drawing.Point(658, 649);
+            this.btn55.Location = new System.Drawing.Point(465, 663);
             this.btn55.Name = "btn55";
-            this.btn55.Size = new System.Drawing.Size(107, 94);
+            this.btn55.Size = new System.Drawing.Size(148, 104);
             this.btn55.TabIndex = 35;
             this.btn55.UseVisualStyleBackColor = false;
             // 
             // btn54
             // 
             this.btn54.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn54.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn54.Enabled = false;
-            this.btn54.Location = new System.Drawing.Point(518, 649);
+            this.btn54.Location = new System.Drawing.Point(3, 663);
             this.btn54.Name = "btn54";
-            this.btn54.Size = new System.Drawing.Size(107, 94);
+            this.btn54.Size = new System.Drawing.Size(148, 104);
             this.btn54.TabIndex = 34;
             this.btn54.UseVisualStyleBackColor = false;
             // 
             // btn53
             // 
             this.btn53.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn53.Enabled = false;
-            this.btn53.Location = new System.Drawing.Point(366, 649);
+            this.btn53.Location = new System.Drawing.Point(773, 553);
             this.btn53.Name = "btn53";
-            this.btn53.Size = new System.Drawing.Size(107, 94);
+            this.btn53.Size = new System.Drawing.Size(152, 104);
             this.btn53.TabIndex = 33;
             this.btn53.UseVisualStyleBackColor = false;
             // 
             // btn52
             // 
             this.btn52.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn52.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn52.Enabled = false;
-            this.btn52.Location = new System.Drawing.Point(208, 649);
+            this.btn52.Location = new System.Drawing.Point(311, 553);
             this.btn52.Name = "btn52";
-            this.btn52.Size = new System.Drawing.Size(107, 94);
+            this.btn52.Size = new System.Drawing.Size(148, 104);
             this.btn52.TabIndex = 32;
             this.btn52.UseVisualStyleBackColor = false;
             // 
             // btn51
             // 
             this.btn51.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn51.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn51.Enabled = false;
-            this.btn51.Location = new System.Drawing.Point(56, 649);
+            this.btn51.Location = new System.Drawing.Point(157, 553);
             this.btn51.Name = "btn51";
-            this.btn51.Size = new System.Drawing.Size(107, 94);
+            this.btn51.Size = new System.Drawing.Size(148, 104);
             this.btn51.TabIndex = 31;
             this.btn51.UseVisualStyleBackColor = false;
-            // 
-            // btn66
-            // 
-            this.btn66.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btn66.Enabled = false;
-            this.btn66.Location = new System.Drawing.Point(805, 783);
-            this.btn66.Name = "btn66";
-            this.btn66.Size = new System.Drawing.Size(107, 94);
-            this.btn66.TabIndex = 42;
-            this.btn66.UseVisualStyleBackColor = false;
-            // 
-            // btn65
-            // 
-            this.btn65.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btn65.Enabled = false;
-            this.btn65.Location = new System.Drawing.Point(658, 783);
-            this.btn65.Name = "btn65";
-            this.btn65.Size = new System.Drawing.Size(107, 94);
-            this.btn65.TabIndex = 41;
-            this.btn65.UseVisualStyleBackColor = false;
-            // 
-            // btn64
-            // 
-            this.btn64.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btn64.Enabled = false;
-            this.btn64.Location = new System.Drawing.Point(518, 783);
-            this.btn64.Name = "btn64";
-            this.btn64.Size = new System.Drawing.Size(107, 94);
-            this.btn64.TabIndex = 40;
-            this.btn64.UseVisualStyleBackColor = false;
-            // 
-            // btn63
-            // 
-            this.btn63.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btn63.Enabled = false;
-            this.btn63.Location = new System.Drawing.Point(366, 783);
-            this.btn63.Name = "btn63";
-            this.btn63.Size = new System.Drawing.Size(107, 94);
-            this.btn63.TabIndex = 39;
-            this.btn63.UseVisualStyleBackColor = false;
-            // 
-            // btn62
-            // 
-            this.btn62.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btn62.Enabled = false;
-            this.btn62.Location = new System.Drawing.Point(208, 783);
-            this.btn62.Name = "btn62";
-            this.btn62.Size = new System.Drawing.Size(107, 94);
-            this.btn62.TabIndex = 38;
-            this.btn62.UseVisualStyleBackColor = false;
-            // 
-            // btn61
-            // 
-            this.btn61.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btn61.Enabled = false;
-            this.btn61.Location = new System.Drawing.Point(56, 783);
-            this.btn61.Name = "btn61";
-            this.btn61.Size = new System.Drawing.Size(107, 94);
-            this.btn61.TabIndex = 37;
-            this.btn61.UseVisualStyleBackColor = false;
             // 
             // lblTurn
             // 
@@ -493,7 +465,7 @@
             this.lblTurn.AutoSize = true;
             this.lblTurn.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTurn.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblTurn.Location = new System.Drawing.Point(424, 41);
+            this.lblTurn.Location = new System.Drawing.Point(394, 39);
             this.lblTurn.Name = "lblTurn";
             this.lblTurn.Size = new System.Drawing.Size(221, 33);
             this.lblTurn.TabIndex = 2;
@@ -505,7 +477,7 @@
             this.lblScore.AutoSize = true;
             this.lblScore.Font = new System.Drawing.Font("Stencil", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblScore.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblScore.Location = new System.Drawing.Point(726, 43);
+            this.lblScore.Location = new System.Drawing.Point(706, 43);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(110, 33);
             this.lblScore.TabIndex = 4;
@@ -516,13 +488,15 @@
             this.lblStartToPlay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStartToPlay.AutoSize = true;
+            this.tblMain.SetColumnSpan(this.lblStartToPlay, 2);
             this.lblStartToPlay.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblStartToPlay.ForeColor = System.Drawing.Color.Red;
-            this.lblStartToPlay.Location = new System.Drawing.Point(366, 92);
+            this.lblStartToPlay.Location = new System.Drawing.Point(311, 0);
             this.lblStartToPlay.Name = "lblStartToPlay";
-            this.lblStartToPlay.Size = new System.Drawing.Size(269, 35);
+            this.lblStartToPlay.Size = new System.Drawing.Size(302, 35);
             this.lblStartToPlay.TabIndex = 6;
             this.lblStartToPlay.Text = "Click Start To Play";
+            this.lblStartToPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblWinner
             // 
@@ -538,51 +512,143 @@
             this.lblWinner.Size = new System.Drawing.Size(0, 94);
             this.lblWinner.TabIndex = 43;
             // 
+            // tblMain
+            // 
+            this.tblMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tblMain.ColumnCount = 6;
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tblMain.Controls.Add(this.btn66, 5, 5);
+            this.tblMain.Controls.Add(this.btn65, 4, 5);
+            this.tblMain.Controls.Add(this.btn64, 3, 5);
+            this.tblMain.Controls.Add(this.btn63, 2, 5);
+            this.tblMain.Controls.Add(this.btn62, 1, 5);
+            this.tblMain.Controls.Add(this.btn45, 4, 4);
+            this.tblMain.Controls.Add(this.btn55, 4, 5);
+            this.tblMain.Controls.Add(this.btn44, 3, 4);
+            this.tblMain.Controls.Add(this.btn56, 5, 5);
+            this.tblMain.Controls.Add(this.btn35, 4, 3);
+            this.tblMain.Controls.Add(this.btn43, 2, 4);
+            this.tblMain.Controls.Add(this.btn34, 3, 3);
+            this.tblMain.Controls.Add(this.btn54, 3, 5);
+            this.tblMain.Controls.Add(this.btn61, 0, 5);
+            this.tblMain.Controls.Add(this.btn53, 2, 5);
+            this.tblMain.Controls.Add(this.btn33, 2, 3);
+            this.tblMain.Controls.Add(this.btn51, 0, 5);
+            this.tblMain.Controls.Add(this.btn25, 4, 2);
+            this.tblMain.Controls.Add(this.btn41, 0, 4);
+            this.tblMain.Controls.Add(this.btn24, 3, 2);
+            this.tblMain.Controls.Add(this.btn31, 0, 3);
+            this.tblMain.Controls.Add(this.btn23, 2, 2);
+            this.tblMain.Controls.Add(this.btn46, 5, 4);
+            this.tblMain.Controls.Add(this.btn52, 1, 5);
+            this.tblMain.Controls.Add(this.btn21, 0, 2);
+            this.tblMain.Controls.Add(this.btn11, 0, 1);
+            this.tblMain.Controls.Add(this.btn12, 1, 1);
+            this.tblMain.Controls.Add(this.btn36, 5, 3);
+            this.tblMain.Controls.Add(this.btn22, 1, 2);
+            this.tblMain.Controls.Add(this.btn15, 4, 1);
+            this.tblMain.Controls.Add(this.btn32, 1, 3);
+            this.tblMain.Controls.Add(this.btn14, 3, 1);
+            this.tblMain.Controls.Add(this.btn42, 1, 4);
+            this.tblMain.Controls.Add(this.btn13, 2, 1);
+            this.tblMain.Controls.Add(this.btn16, 5, 1);
+            this.tblMain.Controls.Add(this.btn26, 5, 2);
+            this.tblMain.Controls.Add(this.lblStartToPlay, 2, 0);
+            this.tblMain.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tblMain.Location = new System.Drawing.Point(0, 152);
+            this.tblMain.Name = "tblMain";
+            this.tblMain.RowCount = 7;
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tblMain.Size = new System.Drawing.Size(928, 770);
+            this.tblMain.TabIndex = 44;
+            // 
+            // btn61
+            // 
+            this.btn61.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn61.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn61.Enabled = false;
+            this.btn61.Location = new System.Drawing.Point(3, 553);
+            this.btn61.Name = "btn61";
+            this.btn61.Size = new System.Drawing.Size(148, 104);
+            this.btn61.TabIndex = 37;
+            this.btn61.UseVisualStyleBackColor = false;
+            // 
+            // btn62
+            // 
+            this.btn62.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn62.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn62.Enabled = false;
+            this.btn62.Location = new System.Drawing.Point(465, 553);
+            this.btn62.Name = "btn62";
+            this.btn62.Size = new System.Drawing.Size(148, 104);
+            this.btn62.TabIndex = 38;
+            this.btn62.UseVisualStyleBackColor = false;
+            // 
+            // btn63
+            // 
+            this.btn63.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn63.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn63.Enabled = false;
+            this.btn63.Location = new System.Drawing.Point(619, 553);
+            this.btn63.Name = "btn63";
+            this.btn63.Size = new System.Drawing.Size(148, 104);
+            this.btn63.TabIndex = 39;
+            this.btn63.UseVisualStyleBackColor = false;
+            // 
+            // btn64
+            // 
+            this.btn64.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn64.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn64.Enabled = false;
+            this.btn64.Location = new System.Drawing.Point(157, 663);
+            this.btn64.Name = "btn64";
+            this.btn64.Size = new System.Drawing.Size(148, 104);
+            this.btn64.TabIndex = 40;
+            this.btn64.UseVisualStyleBackColor = false;
+            // 
+            // btn65
+            // 
+            this.btn65.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn65.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn65.Enabled = false;
+            this.btn65.Location = new System.Drawing.Point(311, 663);
+            this.btn65.Name = "btn65";
+            this.btn65.Size = new System.Drawing.Size(148, 104);
+            this.btn65.TabIndex = 41;
+            this.btn65.UseVisualStyleBackColor = false;
+            // 
+            // btn66
+            // 
+            this.btn66.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btn66.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn66.Enabled = false;
+            this.btn66.Location = new System.Drawing.Point(619, 663);
+            this.btn66.Name = "btn66";
+            this.btn66.Size = new System.Drawing.Size(148, 104);
+            this.btn66.TabIndex = 42;
+            this.btn66.UseVisualStyleBackColor = false;
+            // 
             // MemoryGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 928);
+            this.ClientSize = new System.Drawing.Size(928, 922);
+            this.Controls.Add(this.tblMain);
             this.Controls.Add(this.lblWinner);
-            this.Controls.Add(this.lblStartToPlay);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.lblTurn);
-            this.Controls.Add(this.btn66);
-            this.Controls.Add(this.btn65);
-            this.Controls.Add(this.btn64);
-            this.Controls.Add(this.btn63);
-            this.Controls.Add(this.btn62);
-            this.Controls.Add(this.btn61);
-            this.Controls.Add(this.btn56);
-            this.Controls.Add(this.btn55);
-            this.Controls.Add(this.btn54);
-            this.Controls.Add(this.btn53);
-            this.Controls.Add(this.btn52);
-            this.Controls.Add(this.btn51);
-            this.Controls.Add(this.btn46);
-            this.Controls.Add(this.btn45);
-            this.Controls.Add(this.btn44);
-            this.Controls.Add(this.btn43);
-            this.Controls.Add(this.btn42);
-            this.Controls.Add(this.btn41);
-            this.Controls.Add(this.btn36);
-            this.Controls.Add(this.btn35);
-            this.Controls.Add(this.btn34);
-            this.Controls.Add(this.btn33);
-            this.Controls.Add(this.btn32);
-            this.Controls.Add(this.btn31);
-            this.Controls.Add(this.btn26);
-            this.Controls.Add(this.btn25);
-            this.Controls.Add(this.btn24);
-            this.Controls.Add(this.btn23);
-            this.Controls.Add(this.btn22);
-            this.Controls.Add(this.btn21);
-            this.Controls.Add(this.btn16);
-            this.Controls.Add(this.btn15);
-            this.Controls.Add(this.btn14);
-            this.Controls.Add(this.btn13);
-            this.Controls.Add(this.btn12);
-            this.Controls.Add(this.btn11);
             this.Controls.Add(this.lblScoreNum);
             this.Controls.Add(this.lblTurnNumber);
             this.Controls.Add(this.bNextTurn);
@@ -590,6 +656,8 @@
             this.Font = new System.Drawing.Font("Tempus Sans ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "MemoryGame";
             this.Text = "MemoryGame";
+            this.tblMain.ResumeLayout(false);
+            this.tblMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,15 +699,16 @@
         private Button btn53;
         private Button btn52;
         private Button btn51;
+        private Label lblTurn;
+        private Label lblScore;
+        private Label lblStartToPlay;
+        private Label lblWinner;
+        private TableLayoutPanel tblMain;
         private Button btn66;
         private Button btn65;
         private Button btn64;
         private Button btn63;
         private Button btn62;
         private Button btn61;
-        private Label lblTurn;
-        private Label lblScore;
-        private Label lblStartToPlay;
-        private Label lblWinner;
     }
 }
