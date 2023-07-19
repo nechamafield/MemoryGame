@@ -89,7 +89,13 @@ namespace MemoryGameApp
             {
                 ClearButtons(Color.Empty);
             }
-            EnableButtons(true);
+            foreach (Button b in lstbuttons)
+            {
+                if (b.BackColor == Color.LightSteelBlue)
+                {
+                    b.Enabled = true;
+                }
+            }
             int n = 0;
             bool bn = int.TryParse(lblTurnNumber.Text, out n);
             int numturns = n + 1;
@@ -215,7 +221,7 @@ namespace MemoryGameApp
             lblWinner.BackColor = Color.Transparent;
             EnableButtons(true);
             lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
-            bNextTurn.Enabled = true;
+            bNextTurn.Enabled = false;
             lblTurnNumber.Text = "0";
             lblScoreNum.Text = "0";
             lblStartToPlay.Text = "";
