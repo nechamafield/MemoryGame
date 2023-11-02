@@ -31,13 +31,11 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Primary}}" />
-        <!--<Setter Property="BackgroundColor" Value="#22E35C" />-->
         <Setter Property="Background">
             <LinearGradientBrush>
                 <GradientStop Color="#FFD7FE" Offset="0"/>
                 <GradientStop Color="#0024FF" Offset=".4"/>
                 <GradientStop Color="#FFD7FE" Offset=".9"/>
-                
             </LinearGradientBrush>
         </Setter>
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
