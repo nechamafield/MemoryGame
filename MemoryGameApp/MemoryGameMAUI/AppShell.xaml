@@ -7,7 +7,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Memory Game Front End"
+        Title=""
         ContentTemplate="{DataTemplate local:MemoryGameFrontEnd}"
         Route="MemoryGameFrontEnd" />
 

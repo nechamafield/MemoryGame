@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MemoryGameMAUI.MemoryGameFrontEnd"
-             Title="MemoryGameFrontEnd">
+             Title="">
     <Grid ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*,*,*,*,*,*">
         <Grid ColumnDefinitions="2*,2*,3*,*,3*,*" RowDefinitions="*,*" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" ColumnSpacing="10">
             <Button Grid.Column="0" Grid.Row="0" Text="Start" Style="{StaticResource Key=top-buttons}" FontFamily="RAVIE"/>
