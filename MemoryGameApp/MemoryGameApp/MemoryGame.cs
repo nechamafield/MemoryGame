@@ -80,7 +80,8 @@ namespace MemoryGameApp
             {
                 Spots spots = game.Spot[lstbuttons.IndexOf(b)];
                 b.Click += B_Click;
-                b.DataBindings.Add("BackColor", spots, "BackColor");
+                //adding this in make it all colors come up right away
+                //b.DataBindings.Add("BackColor", spots, "BackColor");
             });
 
             lblTurnNumber.DataBindings.Add("Text", game, "TurnNumberText");
