@@ -65,9 +65,20 @@ namespace MemoryGameSystem
 
         public List<Spots> Spot { get; private set; } = new();
 
+        public Color lblWinnerColor { get => this.WinnerColor; }
 
         public string TurnNumberText { get => $"{this.TurnNumber.ToString()}"; }
         public string ScoreText { get => $"{this.Score.ToString()}"; }
+
+        public Color WinnerColor
+        {
+            get => _winnercolor;
+            set
+            {
+                _winnercolor = value;
+                this.InvokePropertyChanged("lblWinnerColor");
+            }
+        }
 
         public string TurnNumber
         {
@@ -183,7 +194,7 @@ namespace MemoryGameSystem
             //bNextTurn.Enabled = false;
             _winner = "";
             _winnercolor = Color.Transparent;
-            this.Spot.ForEach(b => b.BackColor = this.SpotNotClicked);
+            Spot.ForEach(b => b.BackColor = Color.LightSteelBlue);
             this.Spot.ForEach(b => b.ClearSpots());
             this.GameStatus = GameStatusEnum.NotStarted;
             MessageText();
@@ -227,7 +238,7 @@ namespace MemoryGameSystem
             }
         }
 
-        private void ClearButtons(Color c)
+        public void ClearButtons(Color c)
         {
             btn1test.BackColor = c;
             btn2test.BackColor = c;
@@ -258,7 +269,7 @@ namespace MemoryGameSystem
             }
         }
 
-        public void ReSetBtns()
+        public void ResetBtns()
         {
             btn1test = new();
             btn2test = new();
@@ -289,7 +300,7 @@ namespace MemoryGameSystem
             TurnNumber = numturns.ToString();
             if (Spot.ToString().Contains("btn") == false)
             {
-                ReSetBtns();
+                ResetBtns();
             }
             if (Spot.ToString().Contains("btn"))
             {

@@ -5,7 +5,7 @@ namespace MemoryGameApp
 {
     public partial class MemoryGame : Form
     {
-        //Game game = new();
+        Game game = new();
         List<Button> lstbuttons;
         List<List<Button>> lstmatchingsets;
         List<Button> lstRemainingBtns = new();
@@ -48,82 +48,84 @@ namespace MemoryGameApp
             ////*/
 
 
-            lstmatchingsets = new()
-            {
-                new List<Button>(){btn33, btn56},
-                new(){btn53, btn11},
-                new(){btn12, btn46},
-                new(){btn13, btn66},
-                new(){btn14, btn42},
-                new(){btn15, btn64},
-                new(){btn16, btn21},
-                new(){btn22, btn55},
-                new(){btn23, btn52},
-                new(){btn24, btn41},
-                new(){btn25, btn26},
-                new(){btn31, btn36},
-                new(){btn32, btn43},
-                new(){btn34, btn65},
-                new(){btn35, btn63},
-                new(){btn44, btn54},
-                new(){btn61, btn51},
-                new(){btn45, btn62},
-            };
-            foreach (List<Button> sublist in lstmatchingsets)
-            {
-                var c = GetRandomBackColor();
-                sublist.ForEach(b => b.Tag = c);
-            }
-
-
-            //lstbuttons.ForEach(b =>
+            //lstmatchingsets = new()
             //{
-            //    Spots spots = game.Spot[lstbuttons.IndexOf(b)];
-            //    b.Click += B_Click;
-            //    b.DataBindings.Add("Text", game, "TurnNumberText");
-            //    b.DataBindings.Add("Text", game, "GameStatusDescription");
-            //    //b.DataBindings.Add("Text", game, "ScoreText");
-            //    b.DataBindings.Add("BackColor", spots, "BackColor");
-            //    //b.DataBindings.Add("Text", game, "Winner");
-            //});
+            //    new List<Button>(){btn33, btn56},
+            //    new(){btn53, btn11},
+            //    new(){btn12, btn46},
+            //    new(){btn13, btn66},
+            //    new(){btn14, btn42},
+            //    new(){btn15, btn64},
+            //    new(){btn16, btn21},
+            //    new(){btn22, btn55},
+            //    new(){btn23, btn52},
+            //    new(){btn24, btn41},
+            //    new(){btn25, btn26},
+            //    new(){btn31, btn36},
+            //    new(){btn32, btn43},
+            //    new(){btn34, btn65},
+            //    new(){btn35, btn63},
+            //    new(){btn44, btn54},
+            //    new(){btn61, btn51},
+            //    new(){btn45, btn62},
+            //};
+            //foreach (List<Button> sublist in lstmatchingsets)
+            //{
+            //    var c = GetRandomBackColor();
+            //    sublist.ForEach(b => b.Tag = c);
+            //}
+
+
+            lstbuttons.ForEach(b =>
+            {
+                Spots spots = game.Spot[lstbuttons.IndexOf(b)];
+                b.Click += B_Click;
+                b.DataBindings.Add("BackColor", spots, "BackColor");
+            });
+
+            lblTurnNumber.DataBindings.Add("Text", game, "TurnNumberText");
+            lblScoreNum.DataBindings.Add("Text", game, "ScoreText");
+            //lblWinner.DataBindings.Add("Color", game, "lblWinnerColor");
+            //lblWinner.DataBindings.Add("Text", game, "WinnerLabel");
         }
 
-        private void NextTurn(Button btn)
-        {
-            lblStartToPlay.Text = "";
-            bNextTurn.Enabled = false;
-            if (btn1test.BackColor != btn2test.BackColor)
-            {
-                ClearButtons(Color.LightSteelBlue);
-            }
-            else if (btn1test.BackColor == btn2test.BackColor)
-            {
-                ClearButtons(Color.Empty);
-            }
-            foreach (Button b in lstbuttons)
-            {
-                if (b.BackColor == Color.LightSteelBlue)
-                {
-                    b.Enabled = true;
-                }
-            }
-            int n = 0;
-            bool bn = int.TryParse(lblTurnNumber.Text, out n);
-            int numturns = n + 1;
-            lblTurnNumber.Text = numturns.ToString();
-            if (btn.Name.Contains("btn") == false)
-            {
-                ReSetBtns();
-            }
-            if (btn.Name.Contains("btn"))
-            {
-                DoTurn(btn);
-            }
-        }
+        //private void NextTurn(Button btn)
+        //{
+        //    lblStartToPlay.Text = "";
+        //    bNextTurn.Enabled = false;
+        //    if (btn1test.BackColor != btn2test.BackColor)
+        //    {
+        //        ClearButtons(Color.LightSteelBlue);
+        //    }
+        //    else if (btn1test.BackColor == btn2test.BackColor)
+        //    {
+        //        ClearButtons(Color.Empty);
+        //    }
+        //    foreach (Button b in lstbuttons)
+        //    {
+        //        if (b.BackColor == Color.LightSteelBlue)
+        //        {
+        //            b.Enabled = true;
+        //        }
+        //    }
+        //    int n = 0;
+        //    bool bn = int.TryParse(lblTurnNumber.Text, out n);
+        //    int numturns = n + 1;
+        //    lblTurnNumber.Text = numturns.ToString();
+        //    if (btn.Name.Contains("btn") == false)
+        //    {
+        //        ReSetBtns();
+        //    }
+        //    if (btn.Name.Contains("btn"))
+        //    {
+        //        DoTurn(btn);
+        //    }
+        //}
 
         private void BNextTurn_Click(object? sender, EventArgs e)
         {
-            NextTurn((Button)sender);
+            //NextTurn((Button)sender);
+            game.NextTurn((Spots)sender);
         }
 
         private void EnableButtons(bool enable)
@@ -139,17 +141,17 @@ namespace MemoryGameApp
             lblScoreNum.Text = scorenum.ToString();
         }
 
-        private Color GetRandomBackColor(int minr, int maxr, int ming, int maxg, int minb, int maxb)
-        {
-            Random rnd = new();
-            var c = Color.FromArgb(rnd.Next(minr, maxr), rnd.Next(ming, maxg), rnd.Next(minb, maxb));
-            return c;
-        }
+        //private Color GetRandomBackColor(int minr, int maxr, int ming, int maxg, int minb, int maxb)
+        //{
+        //    Random rnd = new();
+        //    var c = Color.FromArgb(rnd.Next(minr, maxr), rnd.Next(ming, maxg), rnd.Next(minb, maxb));
+        //    return c;
+        //}
 
-        private Color GetRandomBackColor()
-        {
-            return GetRandomBackColor(0, 256, 0, 256, 0, 256);
-        }
+        //private Color GetRandomBackColor()
+        //{
+        //    return GetRandomBackColor(0, 256, 0, 256, 0, 256);
+        //}
 
         public void SetButtons(Button btn)
         {
@@ -221,18 +223,18 @@ namespace MemoryGameApp
             }
         }
 
-        private void Start()
-        {
-            lblWinner.SendToBack();
-            lblWinner.Text = "";
-            lblWinner.BackColor = Color.Transparent;
-            EnableButtons(true);
-            lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
-            bNextTurn.Enabled = false;
-            lblTurnNumber.Text = "0";
-            lblScoreNum.Text = "0";
-            lblStartToPlay.Text = "";
-        }
+        //private void Start()
+        //{
+        //    lblWinner.SendToBack();
+        //    lblWinner.Text = "";
+        //    lblWinner.BackColor = Color.Transparent;
+        //    EnableButtons(true);
+        //    lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
+        //    bNextTurn.Enabled = false;
+        //    lblTurnNumber.Text = "0";
+        //    lblScoreNum.Text = "0";
+        //    lblStartToPlay.Text = "";
+        //}
 
         private void B_Click(object? sender, EventArgs e)
         {
@@ -246,12 +248,12 @@ namespace MemoryGameApp
         {
             if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
             {
-                Start();
-                ReSetBtns();
+                game.Start();
+                game.ResetBtns();
             }
             else
             {
-                ClearButtons(Color.LightSteelBlue);
+                game.ClearButtons(Color.LightSteelBlue);
                 lstbuttons.ForEach(b => b.Text = "");
                 lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
                 EnableButtons(false);
