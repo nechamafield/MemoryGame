@@ -5,7 +5,11 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGameApp", "MemoryGameApp\MemoryGameApp.csproj", "{890A0F2D-7ECD-427B-B929-D26D70722066}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGameMAUI", "MemoryGameMAUI\MemoryGameMAUI.csproj", "{8308B7B6-6805-4BF0-8B00-CDD4F26A0058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGameMAUI", "MemoryGameMAUI\MemoryGameMAUI.csproj", "{8308B7B6-6805-4BF0-8B00-CDD4F26A0058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGameSystem", "MemoryGameSystem\MemoryGameSystem.csproj", "{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGameTest", "MemoryGameTest\MemoryGameTest.csproj", "{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +27,14 @@ Global
 		{8308B7B6-6805-4BF0-8B00-CDD4F26A0058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8308B7B6-6805-4BF0-8B00-CDD4F26A0058}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8308B7B6-6805-4BF0-8B00-CDD4F26A0058}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

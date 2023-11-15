@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
+using MemoryGameSystem;
 
 namespace MemoryGameApp
 {
     public partial class MemoryGame : Form
     {
+        //Game game = new();
         List<Button> lstbuttons;
         List<List<Button>> lstmatchingsets;
         List<Button> lstRemainingBtns = new();
-
-       
 
         Button btn1test = new();
         Button btn2test = new();
@@ -33,25 +22,35 @@ namespace MemoryGameApp
             bNextTurn.Click += BNextTurn_Click;
             lstbuttons.ForEach(b => b.Click += B_Click);
 
-            //now, the matching sets are hard coded in.
-            //should really have a list of all buttons, and another list of buttons remaining - (that are not yet in a set)
-            //lstRemainingBtns = lstbuttons.ToList()  
-            //should get a random color and assign 2 random buttons from the lstButtonsRemaining
-            //then, it should remove those buttons from lstButtonRemaining, but make sure that they are not removed from lstButtons.
-            // the way to see if there is a winner should be to see if the colors match - not if the buttons match in the set
-                    //private void AssignColors()
-                    // {
-                    //  while (lstRemainingBtns.Count > 1)
-                    //  {
-                    //      Color c = GetRandomBackColor();
-                    //      assign 2 random btns from lstButtonsRemaining to that color
-                    //      remove those buttons from lstRemainingButtons
+            ////now, the matching sets are hard coded in.
+            ////should really have a list of all buttons, and another list of buttons remaining - (that are not yet in a set)
+            ////lstRemainingBtns = lstbuttons.ToList()  
+            ////should get a random color and assign 2 random buttons from the lstButtonsRemaining
+            ////then, it should remove those buttons from lstButtonRemaining, but make sure that they are not removed from lstButtons.
+            //// the way to see if there is a winner should be to see if the colors match - not if the buttons match in the set
+            ////private void AssignColors()
+            //// {
+            ////  while (lstRemainingBtns.Count > 1)
+            ////  {
+            ////      Color c = GetRandomBackColor();
+            ////      assign 2 random btns from lstButtonsRemaining to that color
+            ////      remove those buttons from lstRemainingButtons
 
+            ///*
+            ////List of Lists
+            ////List of Match => new class
+            ////    Property SetBackcolor => set both buttons to have the same backcolor
+
+            ////lstmatchingsets = new()
+            ////{
+            ////    new Match(){btnMatch1 = btn33, btnMatch2 = btn56}
+            ////}
+            ////*/
 
 
             lstmatchingsets = new()
             {
-                new(){btn33, btn56},
+                new List<Button>(){btn33, btn56},
                 new(){btn53, btn11},
                 new(){btn12, btn46},
                 new(){btn13, btn66},
@@ -75,6 +74,18 @@ namespace MemoryGameApp
                 var c = GetRandomBackColor();
                 sublist.ForEach(b => b.Tag = c);
             }
+
+
+            //lstbuttons.ForEach(b =>
+            //{
+            //    Spots spots = game.Spot[lstbuttons.IndexOf(b)];
+            //    b.Click += B_Click;
+            //    b.DataBindings.Add("Text", game, "TurnNumberText");
+            //    b.DataBindings.Add("Text", game, "GameStatusDescription");
+            //    //b.DataBindings.Add("Text", game, "ScoreText");
+            //    b.DataBindings.Add("BackColor", spots, "BackColor");
+            //    //b.DataBindings.Add("Text", game, "Winner");
+            //});
         }
 
         private void NextTurn(Button btn)
@@ -137,10 +148,7 @@ namespace MemoryGameApp
 
         private Color GetRandomBackColor()
         {
-
-
             return GetRandomBackColor(0, 256, 0, 256, 0, 256);
-
         }
 
         public void SetButtons(Button btn)
@@ -153,7 +161,6 @@ namespace MemoryGameApp
             {
                 btn1test = btn;
             }
-
         }
 
         private void ClearButtons(Color c)
@@ -225,7 +232,6 @@ namespace MemoryGameApp
             lblTurnNumber.Text = "0";
             lblScoreNum.Text = "0";
             lblStartToPlay.Text = "";
-
         }
 
         private void B_Click(object? sender, EventArgs e)
