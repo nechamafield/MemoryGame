@@ -177,7 +177,7 @@ namespace MemoryGameApp
             btn2test = new();
         }
 
-        private void Winner()
+        private void WonGame()
         {
             ClearButtons(Color.Empty);
             lblWinner.BringToFront();
@@ -197,7 +197,7 @@ namespace MemoryGameApp
             }
             if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
             {
-                Winner();
+                WonGame();
             }
         }
 

@@ -15,10 +15,11 @@ namespace MemoryGameSystem
 
         //SpotColorEnum _spotcolor = SpotColorEnum.SpotNotClicked;
         private Color _backcolor = Color.Empty;
-        private string _turnnumber = "";
-        private string _score = "";
-        private string _winner = "";
-        private string _message = "";
+        private string _turnnumber = ""; //bind to txtturnnumber
+        private string _score = ""; //bind to txtscore
+        private string _winner = ""; //bind to lblwinner
+        private string _message = ""; //bind to lblclicktostart
+        private Color _winnercolor = Color.Black; //bind to lblwinner
 
         List<List<Spots>> lstMatchingSets = new();
         GameStatusEnum _gamestatus = GameStatusEnum.NotStarted;
@@ -55,7 +56,11 @@ namespace MemoryGameSystem
                 new(){this.Spot[18], this.Spot[36]},
             };
 
-            this.Spot.ForEach(b => b.BackColor = this.SpotNotClicked);
+            foreach (List<Spots> sublist in lstMatchingSets)
+            {
+                var c = GetRandomBackColor();
+                sublist.ForEach(b => b.BackColor = c);
+            }
         }
 
         public List<Spots> Spot { get; private set; } = new();
@@ -90,9 +95,11 @@ namespace MemoryGameSystem
             set
             {
                 _winner = value;
-                this.InvokePropertyChanged("Winner");
+                this.InvokePropertyChanged("WinnerLabel");
             }
         }
+
+        private string WinnerLabel { get => $"CONGRATS: {this.TurnNumber.ToString()} TRIES!!"; }
 
         public GameStatusEnum GameStatus
         {
@@ -100,9 +107,10 @@ namespace MemoryGameSystem
             set
             {
                 _gamestatus = value;
-                this.InvokePropertyChanged("TurnNumberTest");
-                this.InvokePropertyChanged("ScoreTest");
+                this.InvokePropertyChanged("TurnNumberText");
+                this.InvokePropertyChanged("ScoreText");
                 this.InvokePropertyChanged("GameStatusDescription");
+                this._backcolor = SpotNotClicked;
             }
         }
 
@@ -134,15 +142,6 @@ namespace MemoryGameSystem
             }
         }
 
-        public Color SpotClickedBackColor
-        {
-            get
-            {
-                Color backcolor = GetRandomBackColor();
-                return backcolor;
-            }
-        }
-
         public string Message
         {
             get => _message;
@@ -170,55 +169,132 @@ namespace MemoryGameSystem
             {
                 msg = "Great Job!";
             }
-            return msg;
+            if (btn1test.BackColor == btn2test.BackColor)
+            {
+                msg = "Great Job!";
+            }
+                return msg;
         }
 
         public void Start()
         {
-            //this.Winner = winnner.SendToBack();
-            //this.Winner = winner;
-            //this.Winner.BackColor = Color.Transparent;
+            //lblWinner.SendToBack();
             //EnableButtons(true);
-            //lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
             //bNextTurn.Enabled = false;
+            _winner = "";
+            _winnercolor = Color.Transparent;
+            this.Spot.ForEach(b => b.BackColor = this.SpotNotClicked);
             this.Spot.ForEach(b => b.ClearSpots());
             this.GameStatus = GameStatusEnum.NotStarted;
             MessageText();
         }
 
+        public void SetButtons(Spots btn)
+        {
+            if (btn1test.ToString().Contains("btn"))
+            {
+                btn2test = btn;
+            }
+            else
+            {
+                btn1test = btn;
+            }
+        }
+
+        private void AddOneScore()
+        {
+            int n = 0;
+            bool bn = int.TryParse(_score, out n);
+            int scorenum = n + 1;
+            _score = scorenum.ToString();
+        }
 
         private void ClickedButtons(Spots btn)
         {
             //bNextTurn.Enabled = false;
             if (btn == btn1test || btn == btn2test)
             {
-                //btn.BackColor = (Color)btn.Tag;
+                btn.BackColor = btn.BackColor;
             }
 
-            //if (btn1test.BackColor == btn2test.BackColor)
-            //{
-            //    lblStartToPlay.Text = "GREAT JOB!";
-            //    AddOneScore();
-            //}
-            //else
-            //{
-            //    lblScoreNum.Text = lblScoreNum.Text;
-            //}
+            if (btn1test.BackColor == btn2test.BackColor)
+            {
+                AddOneScore();
+            }
+            else
+            {
+                _score = _score;
+            }
         }
 
-        public void DoTurn()
+        private void ClearButtons(Color c)
         {
-
+            btn1test.BackColor = c;
+            btn2test.BackColor = c;
+            //btn1test = "";
+            //btn2test = "";
         }
 
-        public void NextTurn()
+        private void WonGame()
         {
-
+            ClearButtons(Color.Empty);
+            //lblWinner.BringToFront();
+            _winnercolor = Color.Black;
+            //bNextTurn.Enabled = false;
         }
 
-        public void DetectMatch()
+        public void DoTurn(Spots btn)
         {
+            SetButtons(btn);
+            ClickedButtons(btn);
+            if (btn2test.ToString() != "")
+            {
+                //EnableButtons(false);
+                //bNextTurn.Enabled = true;
+            }
+            if (Spot.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
+            {
+                WonGame();
+            }
+        }
 
+        public void ReSetBtns()
+        {
+            btn1test = new();
+            btn2test = new();
+        }
+
+        public void NextTurn(Spots btn)
+        {
+            MessageText();
+            //bNextTurn.Enabled = false;
+            if (btn1test.BackColor != btn2test.BackColor)
+            {
+                ClearButtons(Color.LightSteelBlue);
+            }
+            else if (btn1test.BackColor == btn2test.BackColor)
+            {
+                ClearButtons(Color.Empty);
+            }
+            foreach (Spots b in Spot)
+            {
+                if (b.BackColor == Color.LightSteelBlue)
+                {
+                    //b.Enabled = true;
+                }
+            }
+            int n = 0;
+            bool bn = int.TryParse(TurnNumber, out n);
+            int numturns = n + 1;
+            TurnNumber = numturns.ToString();
+            if (Spot.ToString().Contains("btn") == false)
+            {
+                ReSetBtns();
+            }
+            if (Spot.ToString().Contains("btn"))
+            {
+                DoTurn(btn);
+            }
         }
 
         private void InvokePropertyChanged([CallerMemberName] string propertyname = "")
