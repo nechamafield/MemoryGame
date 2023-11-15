@@ -254,10 +254,11 @@ namespace MemoryGameSystem
             //bNextTurn.Enabled = false;
         }
 
-        public void DoTurn(Spots btn)
+        public void DoTurn(int spotnum)
         {
-            SetButtons(btn);
-            ClickedButtons(btn);
+            Spots spot = this.Spot[spotnum];
+            SetButtons(spot);
+            ClickedButtons(spot);
             if (btn2test.ToString() != "")
             {
                 //EnableButtons(false);
@@ -304,7 +305,7 @@ namespace MemoryGameSystem
             }
             if (Spot.ToString().Contains("btn"))
             {
-                DoTurn(btn);
+                this.DoTurn(this.Spot.IndexOf(btn));
             }
         }
 

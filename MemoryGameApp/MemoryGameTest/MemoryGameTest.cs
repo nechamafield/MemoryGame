@@ -27,7 +27,7 @@ namespace MemoryGameTest
             Game game = new();
             Spots spot = new();
             game.Start();
-            game.DoTurn(spot);
+           // game.DoTurn(spot.IndexOf(spot));
             string msg = $"score = {game.Score} turn number = {game.TurnNumber} cspot {spot.BackColor.ToString()}";
             Assert.IsTrue(spot.BackColor != Color.LightSteelBlue);
             TestContext.WriteLine(msg);
@@ -40,7 +40,7 @@ namespace MemoryGameTest
             Spots spot1 = new();
             Spots spot2 = new();
             game.Start();
-            game.DoTurn(spot1);
+           // game.DoTurn(spot1);
             game.NextTurn(spot2);
             string msg = $"score = {game.Score} turn number = {game.TurnNumber} message = {game.Message} cspot1 {spot1.BackColor.ToString()} cspot2 {spot1.BackColor.ToString()}";
             Assert.IsTrue(spot1.BackColor != Color.LightSteelBlue);

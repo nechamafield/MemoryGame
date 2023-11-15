@@ -80,7 +80,7 @@ namespace MemoryGameApp
             {
                 Spots spots = game.Spot[lstbuttons.IndexOf(b)];
                 b.Click += B_Click;
-                //adding this in make it all colors come up right away
+                //--adding this in make it all colors come up right away
                 //b.DataBindings.Add("BackColor", spots, "BackColor");
             });
 
@@ -237,11 +237,18 @@ namespace MemoryGameApp
         //    lblStartToPlay.Text = "";
         //}
 
+        private void DoTurnButton(Button btn)
+        {
+            int num = lstbuttons.IndexOf(btn);
+            game.DoTurn(num);
+        }
+
         private void B_Click(object? sender, EventArgs e)
         {
             if (sender is Button)
             {
                 DoTurn((Button)sender);
+                //DoTurnButton((Button)sender);
             }
         }
 
@@ -250,6 +257,7 @@ namespace MemoryGameApp
             if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
             {
                 game.Start();
+                EnableButtons(Enabled);
                 game.ResetBtns();
             }
             else
