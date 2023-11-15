@@ -247,7 +247,7 @@ namespace MemoryGameApp
         {
             if (sender is Button)
             {
-                DoTurn((Button)sender);
+                //DoTurn((Button)sender);
                 //DoTurnButton((Button)sender);
             }
         }
