@@ -13,10 +13,9 @@ namespace MemoryGameSystem
         public enum GameStatusEnum { NotStarted, Playing, NextTurn, Won, Lost }
         public enum SpotColorEnum { SpotNotClicked, SpotClicked, SpotAlreadyMatched }
 
-        //SpotColorEnum _spotcolor = SpotColorEnum.SpotNotClicked;
         private Color _backcolor = Color.Empty;
-        private string _turnnumber = ""; //bind to txtturnnumber
-        private string _score = ""; //bind to txtscore
+        private string _turnnumber = ""; 
+        private string _score = ""; 
         private string _winner = ""; //bind to lblwinner
         private string _message = ""; //bind to lblclicktostart
         private Color _winnercolor = Color.Black; //bind to lblwinner
@@ -24,8 +23,8 @@ namespace MemoryGameSystem
         List<List<Spots>> lstMatchingSets = new();
         GameStatusEnum _gamestatus = GameStatusEnum.NotStarted;
 
-        Spots btn1test = new();
-        Spots btn2test = new();
+        //Spots spot1test = new();
+        //Spots spot2test = new();
 
         public Game()
         {
@@ -64,6 +63,9 @@ namespace MemoryGameSystem
         }
 
         public List<Spots> Spot { get; private set; } = new();
+
+        public Spots spot1test { get; set; } = new();
+        public Spots spot2test { get; set; } = new();
 
         public Color lblWinnerColor { get => this.WinnerColor; }
 
@@ -180,7 +182,7 @@ namespace MemoryGameSystem
             {
                 msg = "Great Job!";
             }
-            if (btn1test.BackColor == btn2test.BackColor)
+            if (spot1test.BackColor == spot2test.BackColor)
             {
                 msg = "Great Job!";
             }
@@ -202,13 +204,23 @@ namespace MemoryGameSystem
 
         public void SetButtons(Spots btn)
         {
-            if (btn1test.ToString().Contains("btn"))
+            //if (spot1test.BackColor == btn.ColorfulBackColor)
+            //{
+            //    btn = spot2test;
+            //}
+            //else
+            //{
+            //    spot1test = btn;
+            //    btn.ColorfulBackColor = spot1test.ColorfulBackColor;
+            //    spot1test.ColorfulBackColor = spot1test.BackColor;
+            //}
+            if (spot1test.ToString().Contains("btn"))
             {
-                btn2test = btn;
+                spot2test = btn;
             }
             else
             {
-                btn1test = btn;
+                spot1test = btn;
             }
         }
 
@@ -223,12 +235,12 @@ namespace MemoryGameSystem
         private void ClickedButtons(Spots btn)
         {
             //bNextTurn.Enabled = false;
-            if (btn == btn1test || btn == btn2test)
+            if (btn == spot1test || btn == spot2test)
             {
                 btn.BackColor = btn.ColorfulBackColor;
             }
 
-            if (btn1test.BackColor == btn2test.BackColor && btn1test.BackColor == btn.ColorfulBackColor)
+            if (spot1test.BackColor == spot2test.BackColor && spot1test.BackColor == btn.ColorfulBackColor)
             {
                 AddOneScore();
             }
@@ -240,8 +252,8 @@ namespace MemoryGameSystem
 
         public void ClearButtons(Color c)
         {
-            btn1test.BackColor = c;
-            btn2test.BackColor = c;
+            spot1test.BackColor = c;
+            spot2test.BackColor = c;
             //btn1test = "";
             //btn2test = "";
         }
@@ -258,7 +270,7 @@ namespace MemoryGameSystem
         {
             SetButtons(spot);
             ClickedButtons(spot);
-            if (btn2test.ToString() != "")
+            if (spot2test.ToString() != "")
             {
                 //EnableButtons(false);
                 //bNextTurn.Enabled = true;
@@ -271,19 +283,19 @@ namespace MemoryGameSystem
 
         public void ResetBtns()
         {
-            btn1test = new();
-            btn2test = new();
+            spot1test = new();
+            spot2test = new();
         }
 
         public void NextTurn(Spots btn)
         {
             MessageText();
             //bNextTurn.Enabled = false;
-            if (btn1test.BackColor != btn2test.BackColor)
+            if (spot1test.BackColor != spot2test.BackColor)
             {
                 ClearButtons(Color.LightSteelBlue);
             }
-            else if (btn1test.BackColor == btn2test.BackColor)
+            else if (spot1test.BackColor == spot2test.BackColor)
             {
                 ClearButtons(Color.Empty);
             }

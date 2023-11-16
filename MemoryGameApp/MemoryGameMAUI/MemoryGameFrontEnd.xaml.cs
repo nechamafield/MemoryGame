@@ -9,8 +9,8 @@ public partial class MemoryGameFrontEnd : ContentPage
     Game game = new();
     List<Button> lstbuttons;
 
-    Button btn1test = new();
-    Button btn2test = new();
+    //Button btn1test = new();
+    //Button btn2test = new();
 
     public MemoryGameFrontEnd()
     {
@@ -42,7 +42,7 @@ public partial class MemoryGameFrontEnd : ContentPage
     {
         //if (sender is Button)
         //{
-           // game.DoTurn(lstbuttons.IndexOf((Button)sender));
+            //game.DoTurn(lstbuttons.IndexOf((Button)sender));
             //DoTurnButton((Button)sender);
         //}
     }

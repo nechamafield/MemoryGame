@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Net.Sockets;
+using System.Text.RegularExpressions;
 using MemoryGameSystem;
 
 namespace MemoryGameApp
@@ -240,8 +241,18 @@ namespace MemoryGameApp
             int num = lstbuttons.IndexOf(btn);
             Spots spot = game.Spot[num];
             btn.BackColor = spot.BackColor;
+
             game.DoTurn(spot);
-            //game.DoTurn(spot);
+            //if spot1 is null then set spot1 to spot else set spot2 to spot
+            if (game.spot1test is null)
+            {
+                spot = game.spot1test;
+                game.spot1test.BackColor = spot.ColorfulBackColor;
+            }
+            else
+            {
+                spot = game.spot2test;
+            }
             if (btn2test.Name != "")
             {
                 EnableButtons(false);
