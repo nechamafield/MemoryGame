@@ -7,8 +7,8 @@ namespace MemoryGameApp
     {
         Game game = new();
         List<Button> lstbuttons;
-        List<List<Button>> lstmatchingsets;
-        List<Button> lstRemainingBtns = new();
+        //List<List<Button>> lstmatchingsets;
+        //List<Button> lstRemainingBtns = new();
 
         Button btn1test = new();
         Button btn2test = new();
@@ -20,7 +20,7 @@ namespace MemoryGameApp
                                  btn41, btn42, btn43, btn44, btn45, btn46, btn51, btn52, btn53, btn54, btn55, btn56, btn61, btn62, btn63, btn64,btn65, btn66};
             bStart.Click += BStart_Click;
             bNextTurn.Click += BNextTurn_Click;
-            lstbuttons.ForEach(b => b.Click += B_Click);
+            //lstbuttons.ForEach(b => b.Click += B_Click);
 
             ////now, the matching sets are hard coded in.
             ////should really have a list of all buttons, and another list of buttons remaining - (that are not yet in a set)
@@ -80,8 +80,6 @@ namespace MemoryGameApp
             {
                 Spots spots = game.Spot[lstbuttons.IndexOf(b)];
                 b.Click += B_Click;
-                //--adding this in make it all colors come up right away
-                //b.DataBindings.Add("BackColor", spots, "BackColor");
             });
 
             lblTurnNumber.DataBindings.Add("Text", game, "TurnNumberText");
@@ -134,13 +132,13 @@ namespace MemoryGameApp
             lstbuttons.ForEach(b => b.Enabled = enable);
         }
 
-        private void AddOneScore()
-        {
-            int n = 0;
-            bool bn = int.TryParse(lblScoreNum.Text, out n);
-            int scorenum = n + 1;
-            lblScoreNum.Text = scorenum.ToString();
-        }
+        //private void AddOneScore()
+        //{
+        //    int n = 0;
+        //    bool bn = int.TryParse(lblScoreNum.Text, out n);
+        //    int scorenum = n + 1;
+        //    lblScoreNum.Text = scorenum.ToString();
+        //}
 
         //private Color GetRandomBackColor(int minr, int maxr, int ming, int maxg, int minb, int maxb)
         //{
@@ -154,17 +152,17 @@ namespace MemoryGameApp
         //    return GetRandomBackColor(0, 256, 0, 256, 0, 256);
         //}
 
-        public void SetButtons(Button btn)
-        {
-            if (btn1test.Name.Contains("btn"))
-            {
-                btn2test = btn;
-            }
-            else
-            {
-                btn1test = btn;
-            }
-        }
+        //public void SetButtons(Button btn)
+        //{
+        //    if (btn1test.Name.Contains("btn"))
+        //    {
+        //        btn2test = btn;
+        //    }
+        //    else
+        //    {
+        //        btn1test = btn;
+        //    }
+        //}
 
         private void ClearButtons(Color c)
         {
@@ -180,49 +178,49 @@ namespace MemoryGameApp
             btn2test = new();
         }
 
-        private void WonGame()
-        {
-            ClearButtons(Color.Empty);
-            lblWinner.BringToFront();
-            lblWinner.BackColor = Color.Black;
-            lblWinner.Text = "CONGRATS: " + lblTurnNumber.Text + " TRIES!!";
-            bNextTurn.Enabled = false;
-        }
+        //private void WonGame()
+        //{
+        //    ClearButtons(Color.Empty);
+        //    lblWinner.BringToFront();
+        //    lblWinner.BackColor = Color.Black;
+        //    lblWinner.Text = "CONGRATS: " + lblTurnNumber.Text + " TRIES!!";
+        //    bNextTurn.Enabled = false;
+        //}
 
-        private void DoTurn(Button btn)
-        {
-            SetButtons(btn);
-            ClickedButtons(btn);
-            if (btn2test.Name != "")
-            {
-                EnableButtons(false);
-                bNextTurn.Enabled = true;
-            }
-            if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
-            {
-                WonGame();
-            }
-        }
+        //private void DoTurn(Button btn)
+        //{
+        //    SetButtons(btn);
+        //    ClickedButtons(btn);
+        //    if (btn2test.Name != "")
+        //    {
+        //        EnableButtons(false);
+        //        bNextTurn.Enabled = true;
+        //    }
+        //    if (lstbuttons.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
+        //    {
+        //        WonGame();
+        //    }
+        //}
 
-        private void ClickedButtons(Button btn)
-        {
-            bNextTurn.Enabled = false;
-            if (btn == btn1test || btn == btn2test)
-            {
-                btn.BackColor = (Color)btn.Tag;
-                //btn.Text = btn.Tag.ToString(); - will write the color name on the button
-            }
+        //private void ClickedButtons(Button btn)
+        //{
+        //    bNextTurn.Enabled = false;
+        //    if (btn == btn1test || btn == btn2test)
+        //    {
+        //        btn.BackColor = (Color)btn.Tag;
+        //        //btn.Text = btn.Tag.ToString(); - will write the color name on the button
+        //    }
 
-            if (btn1test.BackColor == btn2test.BackColor)
-            {
-                lblStartToPlay.Text = "GREAT JOB!";
-                AddOneScore();
-            }
-            else
-            {
-                lblScoreNum.Text = lblScoreNum.Text;
-            }
-        }
+        //    if (btn1test.BackColor == btn2test.BackColor)
+        //    {
+        //        lblStartToPlay.Text = "GREAT JOB!";
+        //        AddOneScore();
+        //    }
+        //    else
+        //    {
+        //        lblScoreNum.Text = lblScoreNum.Text;
+        //    }
+        //}
 
         //private void Start()
         //{
@@ -240,7 +238,15 @@ namespace MemoryGameApp
         private void DoTurnButton(Button btn)
         {
             int num = lstbuttons.IndexOf(btn);
-            game.DoTurn(num);
+            Spots spot = game.Spot[num];
+            btn.BackColor = spot.BackColor;
+            game.DoTurn(spot);
+            //game.DoTurn(spot);
+            if (btn2test.Name != "")
+            {
+                EnableButtons(false);
+                bNextTurn.Enabled = true;
+            }
         }
 
         private void B_Click(object? sender, EventArgs e)
@@ -248,7 +254,7 @@ namespace MemoryGameApp
             if (sender is Button)
             {
                 //DoTurn((Button)sender);
-                //DoTurnButton((Button)sender);
+                DoTurnButton((Button)sender);
             }
         }
 

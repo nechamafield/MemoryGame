@@ -76,6 +76,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\MemoryGameSystem\MemoryGameSystem.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="MemoryGameFrontEnd.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

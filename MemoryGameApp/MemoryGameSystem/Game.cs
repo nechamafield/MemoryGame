@@ -36,6 +36,7 @@ namespace MemoryGameSystem
 
             lstMatchingSets = new()
             {
+                new(){this.Spot[0], this.Spot[18]},
                 new(){this.Spot[1], this.Spot[19]},
                 new(){this.Spot[2], this.Spot[20]},
                 new(){this.Spot[3], this.Spot[21]},
@@ -53,13 +54,12 @@ namespace MemoryGameSystem
                 new(){this.Spot[15], this.Spot[33]},
                 new(){this.Spot[16], this.Spot[34]},
                 new(){this.Spot[17], this.Spot[35]},
-                new(){this.Spot[18], this.Spot[36]},
             };
 
             foreach (List<Spots> sublist in lstMatchingSets)
             {
                 var c = GetRandomBackColor();
-                sublist.ForEach(b => b.BackColor = c);
+                sublist.ForEach(b => b.ColorfulBackColor = c);
             }
         }
 
@@ -194,8 +194,8 @@ namespace MemoryGameSystem
             //bNextTurn.Enabled = false;
             _winner = "";
             _winnercolor = Color.Transparent;
-            Spot.ForEach(b => b.BackColor = Color.LightSteelBlue);
-            this.Spot.ForEach(b => b.ClearSpots());
+            Spot.ForEach(b => b.BackColor = b.BlueBackColor);
+            //this.Spot.ForEach(b => b.ClearSpots());
             this.GameStatus = GameStatusEnum.NotStarted;
             MessageText();
         }
@@ -225,10 +225,10 @@ namespace MemoryGameSystem
             //bNextTurn.Enabled = false;
             if (btn == btn1test || btn == btn2test)
             {
-                btn.BackColor = btn.BackColor;
+                btn.BackColor = btn.ColorfulBackColor;
             }
 
-            if (btn1test.BackColor == btn2test.BackColor)
+            if (btn1test.BackColor == btn2test.BackColor && btn1test.BackColor == btn.ColorfulBackColor)
             {
                 AddOneScore();
             }
@@ -254,9 +254,8 @@ namespace MemoryGameSystem
             //bNextTurn.Enabled = false;
         }
 
-        public void DoTurn(int spotnum)
+        public void DoTurn(Spots spot)
         {
-            Spots spot = this.Spot[spotnum];
             SetButtons(spot);
             ClickedButtons(spot);
             if (btn2test.ToString() != "")
@@ -264,7 +263,7 @@ namespace MemoryGameSystem
                 //EnableButtons(false);
                 //bNextTurn.Enabled = true;
             }
-            if (Spot.TrueForAll(b => b.BackColor != Color.LightSteelBlue))
+            if (Spot.TrueForAll(b => b.BackColor != b.BlueBackColor))
             {
                 WonGame();
             }
@@ -305,7 +304,7 @@ namespace MemoryGameSystem
             }
             if (Spot.ToString().Contains("btn"))
             {
-                this.DoTurn(this.Spot.IndexOf(btn));
+               this.DoTurn(btn);
             }
         }
 
