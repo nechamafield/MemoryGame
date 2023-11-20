@@ -41,10 +41,32 @@ namespace MemoryGameSystem
             set
             {
                 _bluebackcolor = Color.LightSteelBlue;
+                this.InvokePropertyChanged();
+                this.InvokePropertyChanged("BlueBackColorMaui");
             }
         }
 
-        public System.Drawing.Color ColorfulBackColor { get; set; }
+        public Microsoft.Maui.Graphics.Color BlueBackColorMaui
+        {
+            get => this.ConvertToMauiColor(this.BlueBackColor);
+        }
+
+        public System.Drawing.Color ColorfulBackColor
+        {
+            get => _colorfulbackcolor;
+            set
+            {
+                _colorfulbackcolor = value;
+                this.InvokePropertyChanged();
+                this.InvokePropertyChanged("ColorfulBackColorMaui");
+            }
+        }
+
+        public Microsoft.Maui.Graphics.Color ColorfulBackColorMaui
+        {
+            get => this.ConvertToMauiColor(this.ColorfulBackColor);
+        }
+
 
         Game.SpotColorEnum _spotcolor = Game.SpotColorEnum.SpotNotClicked;
 

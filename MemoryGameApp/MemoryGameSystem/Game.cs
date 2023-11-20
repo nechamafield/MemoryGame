@@ -88,8 +88,6 @@ namespace MemoryGameSystem
             }
         }
 
-        private string WinnerLabel { get => $"CONGRATS: {this.TurnNumber.ToString()} TRIES!!"; }
-
         public GameStatusEnum GameStatus
         {
             get => _gamestatus;
@@ -99,11 +97,8 @@ namespace MemoryGameSystem
                 this.InvokePropertyChanged("TurnNumberText");
                 this.InvokePropertyChanged("ScoreText");
                 this.InvokePropertyChanged("Message");
-                //this._backcolor = SpotNotClicked;
             }
         }
-
-        private string GameStatusDescription { get => $"{this.GameStatus.ToString()}"; }
 
         private Color GetRandomBackColor(int minr, int maxr, int ming, int maxg, int minb, int maxb)
         {
@@ -215,7 +210,7 @@ namespace MemoryGameSystem
             spot2test = null;
         }
 
-        public void NextTurn()//Spots btn)
+        public void NextTurn()
         {
             GameStatus = GameStatusEnum.NextTurn;
             if(spot1test.BackColor == spot2test.BackColor)
