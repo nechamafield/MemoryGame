@@ -122,11 +122,6 @@ namespace MemoryGameApp
         //    }
         //}
 
-        private void BNextTurn_Click(object? sender, EventArgs e)
-        {
-            //NextTurn((Button)sender);
-            game.NextTurn((Spots)sender);
-        }
 
         private void EnableButtons(bool enable)
         {
@@ -236,24 +231,43 @@ namespace MemoryGameApp
         //    lblStartToPlay.Text = "";
         //}
 
-        private void DoTurnButton(Button btn)
+        private void SetSpots(Button btn)
         {
-            int num = lstbuttons.IndexOf(btn);
-            Spots spot = game.Spot[num];
-            btn.BackColor = spot.BackColor;
-
-            game.DoTurn(spot);
-            //if spot1 is null then set spot1 to spot else set spot2 to spot
-            if (game.spot1test is null)
+            if (lstbuttons.Contains(btn))
             {
-                spot = game.spot1test;
-                game.spot1test.BackColor = spot.ColorfulBackColor;
+                int num = lstbuttons.IndexOf(btn);
+                Spots spot = game.Spot[num];
+                if (game.spot1test is null)
+                {
+                    game.spot1test = spot;
+                    game.spot1test.BackColor = spot.ColorfulBackColor;
+                    btn.BackColor = spot.BackColor;
+                }
+                else if (game.spot1test != null && game.spot2test is null)
+                {
+                    game.spot2test = spot;
+                    game.spot2test.BackColor = spot.ColorfulBackColor;
+                    btn.BackColor = spot.BackColor;
+                    bNextTurn.Enabled = true;
+                }
+                else
+                {
+                    EnableButtons(false);
+                }
+                game.DoTurn(spot);
             }
             else
             {
-                spot = game.spot2test;
+                game.NextTurn();
+                game.spot1test = null;
+                game.spot2test = null;
             }
-            if (btn2test.Name != "")
+        }
+
+        private void DoTurnButton(Button btn)
+        {
+            SetSpots(btn);
+            if (btn2test is null)
             {
                 EnableButtons(false);
                 bNextTurn.Enabled = true;
@@ -264,10 +278,23 @@ namespace MemoryGameApp
         {
             if (sender is Button)
             {
-                //DoTurn((Button)sender);
                 DoTurnButton((Button)sender);
             }
         }
+
+        private void DoNextTurn(Button btn)
+        {
+            SetSpots(btn);
+        }
+
+        private void BNextTurn_Click(object? sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                DoNextTurn((Button)sender);
+            }
+        }
+
 
         private void BStart_Click(object? sender, EventArgs e)
         {
