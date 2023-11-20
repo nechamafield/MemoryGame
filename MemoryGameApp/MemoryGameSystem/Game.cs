@@ -10,7 +10,7 @@ namespace MemoryGameSystem
     public class Game : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        public enum GameStatusEnum { NotStarted, Playing, NextTurn, Won, Lost }
+        public enum GameStatusEnum { NotStarted, Playing, NextTurn, Won}
         public enum SpotColorEnum { SpotNotClicked, SpotClicked, SpotAlreadyMatched }
 
         private Color _backcolor = Color.Empty;
@@ -60,6 +60,7 @@ namespace MemoryGameSystem
                 var c = GetRandomBackColor();
                 sublist.ForEach(b => b.ColorfulBackColor = c);
             }
+            GameStatus = GameStatusEnum.NotStarted;
         }
 
         public List<Spots> Spot { get; private set; } = new();
@@ -122,8 +123,8 @@ namespace MemoryGameSystem
                 _gamestatus = value;
                 this.InvokePropertyChanged("TurnNumberText");
                 this.InvokePropertyChanged("ScoreText");
-                this.InvokePropertyChanged("GameStatusDescription");
-                this._backcolor = SpotNotClicked;
+                this.InvokePropertyChanged("Message");
+                //this._backcolor = SpotNotClicked;
             }
         }
 
@@ -157,37 +158,51 @@ namespace MemoryGameSystem
 
         public string Message
         {
-            get => _message;
-            set
+            get
             {
-                _message = value;
-                this.InvokePropertyChanged(MessageText());
+                string s = "";
+                switch (this.GameStatus)
+                {
+                    case GameStatusEnum.NotStarted:
+                        s = "Click Start To Play";
+                        break;
+                    case GameStatusEnum.Playing:
+                        s = "";
+                        break;
+                    case GameStatusEnum.NextTurn:
+                        s = "Great Job!!";
+                        break;
+                    case GameStatusEnum.Won:
+                        s = $"CONGRATS: {this.TurnNumber} TRIES!!";
+                        break;
+                }
+                return s;
             }
         }
 
-        public string MessageText()
-        {
-            string msg = "";
-            if (_gamestatus == GameStatusEnum.NotStarted)
-            {
-                msg = "Click Start to Play";
-                TurnNumber = "0";
-                Score = "0";
-            }
-            else if (_gamestatus == GameStatusEnum.NextTurn)
-            {
-                msg = "";
-            }
-            else if (_gamestatus == GameStatusEnum.NextTurn)
-            {
-                msg = "Great Job!";
-            }
-            //if (spot1test.BackColor == spot2test.BackColor)
-            //{
-            //    msg = "Great Job!";
-            //}
-                return msg;
-        }
+        //public string MessageText()
+        //{
+        //    string msg = "";
+        //    if (_gamestatus == GameStatusEnum.NotStarted)
+        //    {
+        //        msg = "Click Start to Play";
+        //        //TurnNumber = "0";
+        //        //Score = "0";
+        //    }
+        //    else if (_gamestatus == GameStatusEnum.NextTurn)
+        //    {
+        //        msg = "";
+        //    }
+        //    else if (_gamestatus == GameStatusEnum.NextTurn)
+        //    {
+        //        msg = "Great Job!";
+        //    }
+        //    //if (spot1test.BackColor == spot2test.BackColor)
+        //    //{
+        //    //    msg = "Great Job!";
+        //    //}
+        //        return msg;
+        //}
 
         public void Start()
         {
@@ -198,8 +213,8 @@ namespace MemoryGameSystem
             _winnercolor = Color.Transparent;
             Spot.ForEach(b => b.BackColor = b.BlueBackColor);
             //this.Spot.ForEach(b => b.ClearSpots());
-            this.GameStatus = GameStatusEnum.NotStarted;
-            MessageText();
+            this.GameStatus = GameStatusEnum.Playing;
+            //MessageText();
         }
 
 
@@ -237,6 +252,7 @@ namespace MemoryGameSystem
 
         private void WonGame()
         {
+            GameStatus = GameStatusEnum.Won;
             ClearButtons(Color.Empty);
             //lblWinner.BringToFront();
             _winnercolor = Color.Black;
@@ -266,35 +282,21 @@ namespace MemoryGameSystem
 
         public void NextTurn()//Spots btn)
         {
-            MessageText();
+            GameStatus = GameStatusEnum.NextTurn;
+            //MessageText();
             ////bNextTurn.Enabled = false;
-            //if (spot1test.BackColor != spot2test.BackColor)
-            //{
-            //    ClearButtons(Color.LightSteelBlue);
-            //}
-            //else if (spot1test.BackColor == spot2test.BackColor)
-            //{
-            //    ClearButtons(Color.Empty);
-            //}
-            //foreach (Spots b in Spot)
-            //{
-            //    if (b.BackColor == Color.LightSteelBlue)
-            //    {
-            //        //b.Enabled = true;
-            //    }
-            //}
+            if(spot1test.BackColor == spot2test.BackColor)
+            {
+                GameStatus = GameStatusEnum.NextTurn;
+            }
+            else if (spot1test.BackColor != spot2test.BackColor)
+            {
+                GameStatus = GameStatusEnum.Playing;
+            }
             int n = 0;
             bool bn = int.TryParse(TurnNumber, out n);
             int numturns = n + 1;
             TurnNumber = numturns.ToString();
-            //if (Spot.ToString().Contains("btn") == false)
-            //{
-            //    ResetBtns();
-            //}
-            //if (Spot.ToString().Contains("btn"))
-            //{
-            //   this.DoTurn(btn);
-            //}
         }
 
         private void InvokePropertyChanged([CallerMemberName] string propertyname = "")
