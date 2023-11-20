@@ -54,37 +54,18 @@ namespace MemoryGameApp
 
             lblTurnNumber.DataBindings.Add("Text", game, "TurnNumberText");
             lblScoreNum.DataBindings.Add("Text", game, "ScoreText");
-            //lblWinner.DataBindings.Add("Color", game, "lblWinnerColor");
-            lblWinner.DataBindings.Add("Text", game, "Message");
+            lblStartToPlay.DataBindings.Add("Text", game, "Message");
         }
 
         private void EnableButtons(bool enable)
         {
-            lstbuttons.ForEach(b => b.Enabled = enable);
+
+            lstbuttons.ForEach(b =>
+            {
+                if (b.BackColor != Color.LightGray)
+                    b.Enabled = enable;
+            });
         }
-
-        //private void WonGame()
-        //{
-        //    ClearButtons(Color.Empty);
-        //    lblWinner.BringToFront();
-        //    lblWinner.BackColor = Color.Black;
-        //    lblWinner.Text = "CONGRATS: " + lblTurnNumber.Text + " TRIES!!";
-        //    bNextTurn.Enabled = false;
-        //}
-
-
-        //private void Start()
-        //{
-        //    lblWinner.SendToBack();
-        //    lblWinner.Text = "";
-        //    lblWinner.BackColor = Color.Transparent;
-        //    EnableButtons(true);
-        //    lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
-        //    bNextTurn.Enabled = false;
-        //    lblTurnNumber.Text = "0";
-        //    lblScoreNum.Text = "0";
-        //    lblStartToPlay.Text = "";
-        //}
 
         private void SetSpots(Button btn)
         {
@@ -142,43 +123,12 @@ namespace MemoryGameApp
             }
         }
 
-        private void DoTurnButton(Button btn)
-        {
-            SetSpots(btn);
-            if (btn2test is null)
-            {
-                EnableButtons(false);
-                bNextTurn.Enabled = true;
-            }
-        }
-
-        private void B_Click(object? sender, EventArgs e)
-        {
-            if (sender is Button)
-            {
-                DoTurnButton((Button)sender);
-            }
-        }
-
-        private void DoNextTurn(Button btn)
-        {
-            SetSpots(btn);
-        }
-
-        private void BNextTurn_Click(object? sender, EventArgs e)
-        {
-            if (sender is Button)
-            {
-                DoNextTurn((Button)sender);
-            }
-        }
-
-
-        private void BStart_Click(object? sender, EventArgs e)
+        private void StartGame()
         {
             if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
             {
                 game.Start();
+                lstbuttons.ForEach(b => b.BackColor = Color.LightSteelBlue);
                 EnableButtons(Enabled);
                 game.ResetBtns();
             }
@@ -189,6 +139,33 @@ namespace MemoryGameApp
                 lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
                 EnableButtons(false);
             }
+        }
+
+        private void B_Click(object? sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                SetSpots((Button)sender);
+                if (btn2test is null)
+                {
+                    EnableButtons(false);
+                    bNextTurn.Enabled = true;
+                }
+            }
+        }
+
+        private void BNextTurn_Click(object? sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                SetSpots((Button)sender);
+            }
+        }
+
+
+        private void BStart_Click(object? sender, EventArgs e)
+        {
+            StartGame();
         }
 
     }

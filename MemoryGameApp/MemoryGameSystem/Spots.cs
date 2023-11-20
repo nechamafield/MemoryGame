@@ -58,11 +58,6 @@ namespace MemoryGameSystem
             }
         }
 
-        public void ClearSpots()
-        {
-            this.SpotColor = Game.SpotColorEnum.SpotNotClicked;
-        }
-
         private void InvokePropertyChanged([CallerMemberName] string propertyname = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));

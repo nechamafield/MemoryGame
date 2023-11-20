@@ -16,9 +16,6 @@ namespace MemoryGameSystem
         private Color _backcolor = Color.Empty;
         private string _turnnumber = ""; 
         private string _score = ""; 
-        private string _winner = ""; //bind to lblwinner
-        private string _message = ""; //bind to lblclicktostart
-        private Color _winnercolor = Color.Black; //bind to lblwinner
 
         List<List<Spots>> lstMatchingSets = new();
         GameStatusEnum _gamestatus = GameStatusEnum.NotStarted;
@@ -67,21 +64,9 @@ namespace MemoryGameSystem
 
         public Spots? spot1test { get; set; }
         public Spots? spot2test { get; set; }
-
-        public Color lblWinnerColor { get => this.WinnerColor; }
-
         public string TurnNumberText { get => $"{this.TurnNumber.ToString()}"; }
         public string ScoreText { get => this.Score.ToString(); }
 
-        public Color WinnerColor
-        {
-            get => _winnercolor;
-            set
-            {
-                _winnercolor = value;
-                this.InvokePropertyChanged("lblWinnerColor");
-            }
-        }
 
         public string TurnNumber
         {
@@ -100,16 +85,6 @@ namespace MemoryGameSystem
             {
                 _score = value;
                 this.InvokePropertyChanged("ScoreText");
-            }
-        }
-
-        public string Winner
-        {
-            get => _winner;
-            set
-            {
-                _winner = value;
-                this.InvokePropertyChanged("WinnerLabel");
             }
         }
 
@@ -180,41 +155,12 @@ namespace MemoryGameSystem
             }
         }
 
-        //public string MessageText()
-        //{
-        //    string msg = "";
-        //    if (_gamestatus == GameStatusEnum.NotStarted)
-        //    {
-        //        msg = "Click Start to Play";
-        //        //TurnNumber = "0";
-        //        //Score = "0";
-        //    }
-        //    else if (_gamestatus == GameStatusEnum.NextTurn)
-        //    {
-        //        msg = "";
-        //    }
-        //    else if (_gamestatus == GameStatusEnum.NextTurn)
-        //    {
-        //        msg = "Great Job!";
-        //    }
-        //    //if (spot1test.BackColor == spot2test.BackColor)
-        //    //{
-        //    //    msg = "Great Job!";
-        //    //}
-        //        return msg;
-        //}
-
         public void Start()
         {
-            //lblWinner.SendToBack();
-            //EnableButtons(true);
-            //bNextTurn.Enabled = false;
-            _winner = "";
-            _winnercolor = Color.Transparent;
+            TurnNumber = "0";
+            Score = "0";
             Spot.ForEach(b => b.BackColor = b.BlueBackColor);
-            //this.Spot.ForEach(b => b.ClearSpots());
             this.GameStatus = GameStatusEnum.Playing;
-            //MessageText();
         }
 
 
@@ -228,7 +174,6 @@ namespace MemoryGameSystem
 
         private void ClickedButtons(Spots btn)
         {
-            //bNextTurn.Enabled = false;
             if (spot2test != null)
             {
                 if (spot1test.BackColor == spot2test.BackColor)
@@ -246,32 +191,22 @@ namespace MemoryGameSystem
         {
             spot1test.BackColor = c;
             spot2test.BackColor = c;
-            //btn1test = "";
-            //btn2test = "";
         }
 
         private void WonGame()
         {
             GameStatus = GameStatusEnum.Won;
             ClearButtons(Color.Empty);
-            //lblWinner.BringToFront();
-            _winnercolor = Color.Black;
-            //bNextTurn.Enabled = false;
         }
 
         public void DoTurn(Spots spot)
         {
-            //SetButtons(spot);
             ClickedButtons(spot);
-            //if (spot2test.ToString() != "")
-            //{
-            //    //EnableButtons(false);
-            //    //bNextTurn.Enabled = true;
-            //}
-            if (Spot.TrueForAll(b => b.BackColor != b.BlueBackColor))
+            if (Spot.TrueForAll(b => b.BackColor == Color.LightGray))
             {
                 WonGame();
             }
+            
         }
 
         public void ResetBtns()
@@ -283,8 +218,6 @@ namespace MemoryGameSystem
         public void NextTurn()//Spots btn)
         {
             GameStatus = GameStatusEnum.NextTurn;
-            //MessageText();
-            ////bNextTurn.Enabled = false;
             if(spot1test.BackColor == spot2test.BackColor)
             {
                 GameStatus = GameStatusEnum.NextTurn;
