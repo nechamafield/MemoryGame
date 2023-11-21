@@ -4,14 +4,22 @@
              x:Class="MemoryGameMAUI.MemoryGameFrontEnd"
              Title="">
     <Grid ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="*,*,*,*,*,*,*">
-        <Grid ColumnDefinitions="2*,2*,3*,*,3*,*" RowDefinitions="*,*" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" ColumnSpacing="10">
-            <Button x:Name="BtnStart" Grid.Column="0" Grid.Row="0" Text="Start" Clicked="Button_Clicked" Style="{StaticResource Key=top-buttons}" FontFamily="RAVIE"/>
-            <Button x:Name="bNextTurn" Grid.Column="1" Grid.Row="0" Text="Next Turn" Clicked="bNextTurn_Clicked" Style="{StaticResource Key=top-buttons}" FontFamily="RAVIE"/>
-            <Label Grid.Column="2" Grid.Row="0" Text="TURN NUMBER:" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
-            <Label Grid.Column="3" Grid.Row="0" Text="{Binding TurnNumberText}" VerticalTextAlignment="Center"/>
-            <Label Grid.Column="4" Grid.Row="0" Text="SCORE:" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
-            <Label Grid.Column="5" Grid.Row="0" Text="{Binding ScoreText}" VerticalTextAlignment="Center"/>
-            <Label x:Name="lblStartToPlay" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Text="{Binding Message}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontFamily="ROCKWELL" FontSize="30" TextColor="Red"/>
+        <Grid ColumnDefinitions="2*,2*,3*,*,3*,*" RowDefinitions="auto,auto,auto" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" ColumnSpacing="10">
+            <Button x:Name="BtnStart" Grid.Column="0" Grid.Row="1" Text="Start" Clicked="Button_Clicked" Style="{StaticResource Key=top-buttons}" FontFamily="RAVIE"/>
+            <Button x:Name="bNextTurn" Grid.Column="1" Grid.Row="1" Text="Next Turn" Clicked="bNextTurn_Clicked" Style="{StaticResource Key=top-buttons}" FontFamily="RAVIE"/>
+           
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="0">
+                <RadioButton x:Name="Game1Rb" Content="Game 1" CheckedChanged="Game_CheckedChanged" IsChecked="True"/>
+                <RadioButton x:Name="Game2Rb" Content="Game 2" CheckedChanged="Game_CheckedChanged"/>
+                <RadioButton x:Name="Game3Rb" Content="Game 3" CheckedChanged="Game_CheckedChanged"/>
+                <Label x:Name="lblScore" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
+            </HorizontalStackLayout>
+            
+            <Label Grid.Column="2" Grid.Row="1" Text="TURN NUMBER:" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
+            <Label Grid.Column="3" Grid.Row="1" Text="{Binding TurnNumberText}" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
+            <Label  Grid.Column="4" Grid.Row="1" Text="SCORE:" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
+            <Label Grid.Column="5" Grid.Row="1" Text="{Binding ScoreText}" VerticalTextAlignment="Center" FontFamily="STENCIL" FontSize="23"/>
+            <Label x:Name="lblStartToPlay" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="6" Text="{Binding Message}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontFamily="ROCKWELL" FontSize="30" TextColor="Red"/>
         </Grid>
 
         <Button x:Name="btn11" Grid.Column="0" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[0]}" BackgroundColor ="{Binding BackColorMaui}"/>
@@ -20,35 +28,35 @@
         <Button x:Name="btn14" Grid.Column="3" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[3]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn15" Grid.Column="4" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[4]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn16" Grid.Column="5" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[5]}" BackgroundColor="{Binding BackColorMaui}"/>
-                                           
+
         <Button x:Name="btn21" Grid.Column="0" Grid.Row="2" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[6]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn22" Grid.Column="1" Grid.Row="2" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[7]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn23" Grid.Column="2" Grid.Row="2" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[8]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn24" Grid.Column="3" Grid.Row="2" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[9]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn25" Grid.Column="4" Grid.Row="2" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[10]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn26" Grid.Column="5" Grid.Row="2" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[11]}" BackgroundColor="{Binding BackColorMaui}"/>
-                                           
+
         <Button x:Name="btn31" Grid.Column="0" Grid.Row="3" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[12]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn32" Grid.Column="1" Grid.Row="3" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[13]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn33" Grid.Column="2" Grid.Row="3" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[14]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn34" Grid.Column="3" Grid.Row="3" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[15]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn35" Grid.Column="4" Grid.Row="3" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[16]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn36" Grid.Column="5" Grid.Row="3" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[17]}" BackgroundColor="{Binding BackColorMaui}"/>
-                                            
+
         <Button x:Name="btn41" Grid.Column="0" Grid.Row="4" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[18]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn42" Grid.Column="1" Grid.Row="4" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[19]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn43" Grid.Column="2" Grid.Row="4" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[20]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn44" Grid.Column="3" Grid.Row="4" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[21]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn45" Grid.Column="4" Grid.Row="4" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[22]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn46" Grid.Column="5" Grid.Row="4" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[23]}" BackgroundColor="{Binding BackColorMaui}"/>
-                                            
+
         <Button x:Name="btn51" Grid.Column="0" Grid.Row="5" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[24]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn52" Grid.Column="1" Grid.Row="5" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[25]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn53" Grid.Column="2" Grid.Row="5" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[26]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn54" Grid.Column="3" Grid.Row="5" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[27]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn55" Grid.Column="4" Grid.Row="5" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[28]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn56" Grid.Column="5" Grid.Row="5" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[29]}" BackgroundColor="{Binding BackColorMaui}"/>
-                                             
+
         <Button x:Name="btn61" Grid.Column="0" Grid.Row="6" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[30]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn62" Grid.Column="1" Grid.Row="6" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[31]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn63" Grid.Column="2" Grid.Row="6" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[32]}" BackgroundColor="{Binding BackColorMaui}"/>

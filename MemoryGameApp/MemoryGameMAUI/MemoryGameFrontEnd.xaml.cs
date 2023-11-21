@@ -6,14 +6,29 @@ namespace MemoryGameMAUI;
 
 public partial class MemoryGameFrontEnd : ContentPage
 {
-    Game game = new();
+    public event EventHandler? ScoreChanged;
+
+    Game game;// = new();
+    Game activegame;
+    List<Game> lstgame = new() { new Game(), new Game(), new Game() };
     List<Button> lstbuttons;
     Color blue = Color.FromArgb("ACE2FF");
     Color gray = Color.FromArgb("D4D4D4");
 
-public MemoryGameFrontEnd()
+    public static int game1score;
+    public static int game2score;
+    public static int game3score;
+
+    public MemoryGameFrontEnd()
     {
         InitializeComponent();
+        //lstgame.ForEach(g => g.ScoreChanged += G_ScoreChanged);
+        ScoreChanged += G_ScoreChanged;
+        Game1Rb.BindingContext = lstgame[0];
+        Game2Rb.BindingContext = lstgame[1];
+        Game3Rb.BindingContext = lstgame[2];
+        game = lstgame[0];
+        //activegame = lstgame[0];
         this.BindingContext = game;
         lstbuttons = new() { btn11, btn12, btn13, btn14, btn15, btn16, btn21, btn22, btn23, btn24, btn25, btn26, btn31, btn32, btn33, btn34, btn35, btn36,
                                  btn41, btn42, btn43, btn44, btn45, btn46, btn51, btn52, btn53, btn54, btn55, btn56, btn61, btn62, btn63, btn64,btn65, btn66};
@@ -22,6 +37,8 @@ public MemoryGameFrontEnd()
 
     Button btn1test = new();
     Button btn2test = new();
+
+    public static string ScoreMAUI { get => $"      SCORES: Game 1 = {game1score}:   Game 2 = {game2score}:  Game 3 = {game3score} "; }
 
     private void SetSpots(Button btn)
     {
@@ -57,7 +74,11 @@ public MemoryGameFrontEnd()
                 {
                     if (b.BackgroundColor != gray) 
                     {
-                        b.BackgroundColor = blue; 
+                        b.BackgroundColor = blue;
+                        if(Game1Rb.IsChecked == true)
+                        {
+                            
+                        }
                     }
                 }
                 );
@@ -69,6 +90,19 @@ public MemoryGameFrontEnd()
                     if (b.BackgroundColor != blue)
                     {
                         b.BackgroundColor = gray;
+                        if(Game1Rb.IsChecked == true)
+                        {
+                            game1score++;
+                        }
+                        else if (Game2Rb.IsChecked == true)
+                        {
+                            game2score++;
+                        }
+                        else if (Game3Rb.IsChecked == true)
+                        {
+                            game3score++;
+                        }
+                        ScoreChanged?.Invoke(this, new EventArgs());
                     }
                 }
                 );
@@ -136,6 +170,23 @@ public MemoryGameFrontEnd()
         {
             SetSpots((Button)sender);
         }
+    }
+
+    private void Game_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        RadioButton rb = (RadioButton)sender;
+        if (rb.IsChecked == true && rb.BindingContext != null)
+        {
+            game = (Game)rb.BindingContext;
+            this.BindingContext = game;
+            //activegame = (Game)rb.BindingContext;
+            //this.BindingContext = activegame;
+        }
+    }
+
+    private void G_ScoreChanged(object sender, EventArgs e)
+    {
+        lblScore.Text = ScoreMAUI;
     }
 }
 

@@ -10,18 +10,16 @@ namespace MemoryGameSystem
     public class Game : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+
         public enum GameStatusEnum { NotStarted, Playing, NextTurn, Won}
         public enum SpotColorEnum { SpotNotClicked, SpotClicked, SpotAlreadyMatched }
 
         private Color _backcolor = Color.Empty;
         private string _turnnumber = ""; 
-        private string _score = ""; 
+        private string _score = "";
 
         List<List<Spots>> lstMatchingSets = new();
         GameStatusEnum _gamestatus = GameStatusEnum.NotStarted;
-
-        //Spots spot1test = new();
-        //Spots spot2test = new();
 
         public Game()
         {
@@ -66,6 +64,8 @@ namespace MemoryGameSystem
         public Spots? spot2test { get; set; }
         public string TurnNumberText { get => $"{this.TurnNumber.ToString()}"; }
         public string ScoreText { get => this.Score.ToString(); }
+
+
 
 
         public string TurnNumber
