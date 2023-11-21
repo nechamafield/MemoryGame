@@ -14,7 +14,7 @@
             <Label x:Name="lblStartToPlay" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Text="{Binding Message}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontFamily="ROCKWELL" FontSize="30" TextColor="Red"/>
         </Grid>
 
-        <Button x:Name="btn11" Grid.Column="0" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[0]}" BackgroundColor="{Binding BackColorMaui}"/>
+        <Button x:Name="btn11" Grid.Column="0" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[0]}" BackgroundColor ="{Binding BackColorMaui}"/>
         <Button x:Name="btn12" Grid.Column="1" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[1]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn13" Grid.Column="2" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[2]}" BackgroundColor="{Binding BackColorMaui}"/>
         <Button x:Name="btn14" Grid.Column="3" Grid.Row="1" Margin="2" Clicked="btn_Clicked" BindingContext="{Binding Spots[3]}" BackgroundColor="{Binding BackColorMaui}"/>

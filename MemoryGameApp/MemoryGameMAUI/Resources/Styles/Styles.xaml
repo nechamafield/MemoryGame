@@ -31,7 +31,7 @@
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Primary}}" />
-        <Setter Property="Background">
+        <Setter Property="BackgroundColor">
             <LinearGradientBrush>
                 <GradientStop Color="#FFD7FE" Offset="0"/>
                 <GradientStop Color="#0024FF" Offset=".4"/>

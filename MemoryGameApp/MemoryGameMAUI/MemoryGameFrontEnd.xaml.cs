@@ -1,5 +1,5 @@
 using MemoryGameSystem;
-
+using System.Diagnostics;
 
 namespace MemoryGameMAUI;
 
@@ -8,13 +8,16 @@ public partial class MemoryGameFrontEnd : ContentPage
 {
     Game game = new();
     List<Button> lstbuttons;
+    Color blue = Color.FromArgb("ACE2FF");
+    Color gray = Color.FromArgb("D4D4D4");
 
-    public MemoryGameFrontEnd()
+public MemoryGameFrontEnd()
     {
         InitializeComponent();
         this.BindingContext = game;
         lstbuttons = new() { btn11, btn12, btn13, btn14, btn15, btn16, btn21, btn22, btn23, btn24, btn25, btn26, btn31, btn32, btn33, btn34, btn35, btn36,
                                  btn41, btn42, btn43, btn44, btn45, btn46, btn51, btn52, btn53, btn54, btn55, btn56, btn61, btn62, btn63, btn64,btn65, btn66};
+        lstbuttons.ForEach(b => b.BackgroundColor = blue);
     }
 
     Button btn1test = new();
@@ -52,9 +55,9 @@ public partial class MemoryGameFrontEnd : ContentPage
             {
                 lstbuttons.ForEach(b =>
                 {
-                    if (b.BackgroundColor != Color.FromArgb("D4D4D4")) //gray
+                    if (b.BackgroundColor != gray) //gray
                     {
-                        b.BackgroundColor = Color.FromArgb("ACE2FF"); //blue
+                        b.BackgroundColor = blue; //blue
                     }
                 }
                 );
@@ -63,12 +66,25 @@ public partial class MemoryGameFrontEnd : ContentPage
             {
                 lstbuttons.ForEach(b =>
                 {
-                    if (b.BackgroundColor != Color.FromArgb("ACE2FF")) //blue
+                    if (b.BackgroundColor != blue) //blue
                     {
-                        b.BackgroundColor = Color.FromArgb("D4D4D4"); //gray
+                        Debug.Print(b.BackgroundColor.ToString());
+                        b.BackgroundColor = gray; //gray
                     }
+                    else
+                    {
+                        Debug.Print("not the same");
+                    }
+                    //else
+                    //{
+                    //    b.BackgroundColor = Color.FromArgb("ACE2FF"); //blue
+                    //}
                 }
                 );
+                //Spots spot = new();
+                //game.spot1test.BackColor = spot.GrayBackColor;
+                //game.spot2test.BackColor = spot.GrayBackColor;
+                //btn.BackgroundColor = spot.GrayBackColorMaui;
             }
             game.spot1test = null;
             game.spot2test = null;

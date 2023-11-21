@@ -14,10 +14,10 @@ namespace MemoryGameSystem
         public event PropertyChangedEventHandler? PropertyChanged;
 
         System.Drawing.Color _bluebackcolor = Color.LightSteelBlue;
-
+        System.Drawing.Color _graybackcolor = Color.LightGray;
         System.Drawing.Color _colorfulbackcolor;
-
         System.Drawing.Color _backcolor;
+
 
         public System.Drawing.Color BackColor
         {
@@ -49,6 +49,22 @@ namespace MemoryGameSystem
         public Microsoft.Maui.Graphics.Color BlueBackColorMaui
         {
             get => this.ConvertToMauiColor(this.BlueBackColor);
+        }
+
+        public System.Drawing.Color GrayBackColor
+        {
+            get => _graybackcolor;
+            set
+            {
+                _graybackcolor = Color.LightGray;
+                this.InvokePropertyChanged();
+                this.InvokePropertyChanged("GrayBackColorMaui");
+            }
+        }
+
+        public Microsoft.Maui.Graphics.Color GrayBackColorMaui
+        {
+            get => this.ConvertToMauiColor(this.GrayBackColor);
         }
 
         public System.Drawing.Color ColorfulBackColor
