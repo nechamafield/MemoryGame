@@ -55,9 +55,9 @@ public MemoryGameFrontEnd()
             {
                 lstbuttons.ForEach(b =>
                 {
-                    if (b.BackgroundColor != gray) //gray
+                    if (b.BackgroundColor != gray) 
                     {
-                        b.BackgroundColor = blue; //blue
+                        b.BackgroundColor = blue; 
                     }
                 }
                 );
@@ -66,25 +66,16 @@ public MemoryGameFrontEnd()
             {
                 lstbuttons.ForEach(b =>
                 {
-                    if (b.BackgroundColor != blue) //blue
+                    if (b.BackgroundColor != blue)
                     {
-                        Debug.Print(b.BackgroundColor.ToString());
-                        b.BackgroundColor = gray; //gray
+                        b.BackgroundColor = gray;
                     }
-                    else
-                    {
-                        Debug.Print("not the same");
-                    }
-                    //else
-                    //{
-                    //    b.BackgroundColor = Color.FromArgb("ACE2FF"); //blue
-                    //}
                 }
                 );
-                //Spots spot = new();
-                //game.spot1test.BackColor = spot.GrayBackColor;
-                //game.spot2test.BackColor = spot.GrayBackColor;
-                //btn.BackgroundColor = spot.GrayBackColorMaui;
+            }
+            if (lstbuttons.TrueForAll(b => b.BackgroundColor == gray))
+            {
+                game.GameStatus = Game.GameStatusEnum.Won;
             }
             game.spot1test = null;
             game.spot2test = null;
@@ -96,7 +87,7 @@ public MemoryGameFrontEnd()
     {
         lstbuttons.ForEach(b =>
         {
-            if (b.BackgroundColor != Color.FromArgb("D4D4D4")) //gray
+            if (b.BackgroundColor != gray) 
             { 
                 b.IsEnabled = enable;
             }
@@ -108,13 +99,13 @@ public MemoryGameFrontEnd()
         if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
         {
             game.Start();
-            lstbuttons.ForEach(b => b.BackgroundColor = Color.FromArgb("ACE2FF")); //blue
+            lstbuttons.ForEach(b => b.BackgroundColor = blue); 
             EnableButtons(IsEnabled);
             game.ResetBtns();
         }
         else
         {
-            //game.ClearButtons(c.FromArgb("ACE2FF")); //blue
+            game.ClearButtons(System.Drawing.Color.LightSteelBlue);
             lstbuttons.ForEach(b => b.Text = "");
             lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
             EnableButtons(false);
