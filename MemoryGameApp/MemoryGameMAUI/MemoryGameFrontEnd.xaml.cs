@@ -8,10 +8,11 @@ public partial class MemoryGameFrontEnd : ContentPage
 {
     public event EventHandler? ScoreChanged;
 
-    Game game;// = new();
+    //Game game;// = new();
     Game activegame;
     List<Game> lstgame = new() { new Game(), new Game(), new Game() };
     List<Button> lstbuttons;
+    List<RadioButton> lstrb;
     Color blue = Color.FromArgb("ACE2FF");
     Color gray = Color.FromArgb("D4D4D4");
 
@@ -27,12 +28,14 @@ public partial class MemoryGameFrontEnd : ContentPage
         Game1Rb.BindingContext = lstgame[0];
         Game2Rb.BindingContext = lstgame[1];
         Game3Rb.BindingContext = lstgame[2];
-        game = lstgame[0];
-        //activegame = lstgame[0];
-        this.BindingContext = game;
+        //game = lstgame[0];
+        activegame = lstgame[0];
+        this.BindingContext = activegame;
+        //this.BindingContext = game;
         lstbuttons = new() { btn11, btn12, btn13, btn14, btn15, btn16, btn21, btn22, btn23, btn24, btn25, btn26, btn31, btn32, btn33, btn34, btn35, btn36,
                                  btn41, btn42, btn43, btn44, btn45, btn46, btn51, btn52, btn53, btn54, btn55, btn56, btn61, btn62, btn63, btn64,btn65, btn66};
         lstbuttons.ForEach(b => b.BackgroundColor = blue);
+        lstrb = new() { Game1Rb, Game2Rb, Game3Rb }; 
         EnableButtons(false);
         bNextTurn.IsEnabled = false;
     }
@@ -58,7 +61,7 @@ public partial class MemoryGameFrontEnd : ContentPage
             {
                 game.spot2test = spot;
                 game.spot2test.BackColor = spot.ColorfulBackColor;
-                btn.BackgroundColor = spot.BackColorMaui ;
+                btn.BackgroundColor = spot.BackColorMaui;
                 bNextTurn.IsEnabled = true;
             }
             if (game.spot1test != null && game.spot2test != null)
@@ -74,12 +77,12 @@ public partial class MemoryGameFrontEnd : ContentPage
             {
                 lstbuttons.ForEach(b =>
                 {
-                    if (b.BackgroundColor != gray) 
+                    if (b.BackgroundColor != gray)
                     {
                         b.BackgroundColor = blue;
-                        if(Game1Rb.IsChecked == true)
+                        if (Game1Rb.IsChecked == true)
                         {
-                            
+
                         }
                     }
                 }
@@ -92,7 +95,7 @@ public partial class MemoryGameFrontEnd : ContentPage
                     if (b.BackgroundColor != blue)
                     {
                         b.BackgroundColor = gray;
-                        if(Game1Rb.IsChecked == true)
+                        if (Game1Rb.IsChecked == true)
                         {
                             game1score++;
                         }
@@ -123,19 +126,19 @@ public partial class MemoryGameFrontEnd : ContentPage
     {
         lstbuttons.ForEach(b =>
         {
-            if (b.BackgroundColor != gray) 
-            { 
+            if (b.BackgroundColor != gray)
+            {
                 b.IsEnabled = enable;
             }
         });
     }
 
-private void StartGame()
+    private void StartGame()
     {
         if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
         {
             game.Start();
-            lstbuttons.ForEach(b => b.BackgroundColor = blue); 
+            lstbuttons.ForEach(b => b.BackgroundColor = blue);
             EnableButtons(IsEnabled);
             bNextTurn.IsEnabled = false;
             game.ResetBtns();
@@ -149,7 +152,7 @@ private void StartGame()
                 lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
                 EnableButtons(false);
             }
-            catch(Exception ex) { }
+            catch (Exception ex) { }
         }
     }
 
@@ -184,6 +187,13 @@ private void StartGame()
         RadioButton rb = (RadioButton)sender;
         if (rb.IsChecked == true && rb.BindingContext != null)
         {
+            lstrb.ForEach(rb =>
+            {
+                if (game.GameStatus == Game.GameStatusEnum.NotStarted)
+                {
+                    StartGame();
+                }
+            });
             game = (Game)rb.BindingContext;
             this.BindingContext = game;
             //activegame = (Game)rb.BindingContext;
