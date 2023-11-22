@@ -184,8 +184,12 @@ namespace MemoryGameSystem
 
         public void ClearButtons(Color c)
         {
-            spot1test.BackColor = c;
-            spot2test.BackColor = c;
+            try
+            {
+                spot1test.BackColor = c;
+                spot2test.BackColor = c;
+            }
+            catch { }
         }
 
         private void WonGame()

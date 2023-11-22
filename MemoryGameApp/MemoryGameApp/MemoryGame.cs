@@ -134,10 +134,28 @@ namespace MemoryGameApp
             }
             else
             {
-                game.ClearButtons(Color.LightSteelBlue);
-                lstbuttons.ForEach(b => b.Text = "");
-                lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
-                EnableButtons(false);
+                var response = MessageBox.Show("Are you sure you want to start over?", "Memory Game", MessageBoxButtons.YesNo);
+                if (response == DialogResult.No)
+                {
+                    return;
+                }
+                Application.UseWaitCursor = true;
+                try
+                {
+                    game.ClearButtons(Color.LightSteelBlue);
+                    lstbuttons.ForEach(b => b.Text = "");
+                    lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
+                    EnableButtons(false);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Memory Game");
+                }
+                finally
+                {
+                    Application.UseWaitCursor = false;
+                }
+
             }
         }
 
@@ -161,7 +179,6 @@ namespace MemoryGameApp
                 SetSpots((Button)sender);
             }
         }
-
 
         private void BStart_Click(object? sender, EventArgs e)
         {
