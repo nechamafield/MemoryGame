@@ -33,6 +33,8 @@ public partial class MemoryGameFrontEnd : ContentPage
         lstbuttons = new() { btn11, btn12, btn13, btn14, btn15, btn16, btn21, btn22, btn23, btn24, btn25, btn26, btn31, btn32, btn33, btn34, btn35, btn36,
                                  btn41, btn42, btn43, btn44, btn45, btn46, btn51, btn52, btn53, btn54, btn55, btn56, btn61, btn62, btn63, btn64,btn65, btn66};
         lstbuttons.ForEach(b => b.BackgroundColor = blue);
+        EnableButtons(false);
+        bNextTurn.IsEnabled = false;
     }
 
     Button btn1test = new();
@@ -128,21 +130,26 @@ public partial class MemoryGameFrontEnd : ContentPage
         });
     }
 
-    private void StartGame()
+private void StartGame()
     {
         if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
         {
             game.Start();
             lstbuttons.ForEach(b => b.BackgroundColor = blue); 
             EnableButtons(IsEnabled);
+            bNextTurn.IsEnabled = false;
             game.ResetBtns();
         }
         else
         {
-            game.ClearButtons(System.Drawing.Color.LightSteelBlue);
-            lstbuttons.ForEach(b => b.Text = "");
-            lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
-            EnableButtons(false);
+            try
+            {
+                game.ClearButtons(System.Drawing.Color.LightSteelBlue);
+                lstbuttons.ForEach(b => b.Text = "");
+                lblStartToPlay.Text = "WARNING: Clicking Start Will Restart The Game";
+                EnableButtons(false);
+            }
+            catch(Exception ex) { }
         }
     }
 
