@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace MemoryGameSystem
 {
-    public class Match : INotifyPropertyChanged
+    public class Match : Game, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public enum SpotColorEnum { SpotNotClicked, SpotClicked, SpotAlreadyMatched }
-        SpotColorEnum _spotcolot = SpotColorEnum.SpotNotClicked;
+        //public enum SpotColorEnum { SpotNotClicked, SpotClicked, SpotAlreadyMatched }
+        SpotColorEnum _spotcolor = SpotColorEnum.SpotNotClicked;
 
         //public Spots()
         //{
