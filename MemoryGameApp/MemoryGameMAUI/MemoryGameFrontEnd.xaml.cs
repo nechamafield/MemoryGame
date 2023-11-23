@@ -1,5 +1,6 @@
 using MemoryGameSystem;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace MemoryGameMAUI;
 
@@ -8,7 +9,7 @@ public partial class MemoryGameFrontEnd : ContentPage
 {
     public event EventHandler? ScoreChanged;
 
-    //Game game;// = new();
+    Game game;// = new();
     Game activegame;
     List<Game> lstgame = new() { new Game(), new Game(), new Game() };
     List<Button> lstbuttons;
@@ -28,10 +29,10 @@ public partial class MemoryGameFrontEnd : ContentPage
         Game1Rb.BindingContext = lstgame[0];
         Game2Rb.BindingContext = lstgame[1];
         Game3Rb.BindingContext = lstgame[2];
-        //game = lstgame[0];
-        activegame = lstgame[0];
-        this.BindingContext = activegame;
-        //this.BindingContext = game;
+        game = lstgame[0];
+        //activegame = lstgame[0];
+        //this.BindingContext = activegame;
+        this.BindingContext = game;
         lstbuttons = new() { btn11, btn12, btn13, btn14, btn15, btn16, btn21, btn22, btn23, btn24, btn25, btn26, btn31, btn32, btn33, btn34, btn35, btn36,
                                  btn41, btn42, btn43, btn44, btn45, btn46, btn51, btn52, btn53, btn54, btn55, btn56, btn61, btn62, btn63, btn64,btn65, btn66};
         lstbuttons.ForEach(b => b.BackgroundColor = blue);
@@ -187,17 +188,17 @@ public partial class MemoryGameFrontEnd : ContentPage
         RadioButton rb = (RadioButton)sender;
         if (rb.IsChecked == true && rb.BindingContext != null)
         {
-            lstrb.ForEach(rb =>
-            {
-                if (game.GameStatus == Game.GameStatusEnum.NotStarted)
-                {
-                    StartGame();
-                }
-            });
+            //lstrb.ForEach(rb =>
+            //{
+            //    if (game.GameStatus == Game.GameStatusEnum.NotStarted)
+            //    {
+            //        StartGame();
+            //    }
+            //});
             game = (Game)rb.BindingContext;
             this.BindingContext = game;
-            //activegame = (Game)rb.BindingContext;
-            //this.BindingContext = activegame;
+            //game = (Game)rb.BindingContext;
+            //this.BindingContext = game;
         }
     }
 
