@@ -28,6 +28,21 @@ namespace MemoryGameSystem
                 this.Spot.Add(new Spots());
             }
 
+            ////now, the matching sets are hard coded in.
+            ////should really have a list of all buttons, and another list of buttons remaining - (that are not yet in a set)
+            ////lstRemainingBtns = lstbuttons.ToList()  
+            ////should get a random color and assign 2 random buttons from the lstButtonsRemaining
+            ////then, it should remove those buttons from lstButtonRemaining, but make sure that they are not removed from lstButtons.
+            //// the way to see if there is a winner should be to see if the colors match - not if the buttons match in the set
+            ////private void AssignColors()
+            //// {
+            ////  while (lstRemainingBtns.Count > 1)
+            ////  {
+            ////      Color c = GetRandomBackColor();
+            ////      assign 2 random btns from lstButtonsRemaining to that color
+            ////      remove those buttons from lstRemainingButtons
+
+
             lstMatchingSets = new()
             {
                 new(){this.Spot[0], this.Spot[18]},
