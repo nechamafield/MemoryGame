@@ -184,6 +184,7 @@ public partial class MemoryGameFrontEnd : ContentPage
         if (lblStartToPlay.Text == "WARNING: Clicking Start Will Restart The Game" || lblStartToPlay.Text == "Click Start To Play")
         {
             game.Start();
+            //lblScore.Text = "";
             lstbuttons.ForEach(b => b.BackgroundColor = blue);
             EnableButtons(IsEnabled);
             bNextTurn.IsEnabled = false;
@@ -236,11 +237,12 @@ public partial class MemoryGameFrontEnd : ContentPage
             game = (Game)rb.BindingContext;
             this.BindingContext = game;
         }
+       // StartGame();
     }
 
     private void G_ScoreChanged(object sender, EventArgs e)
     {
-        lblScore.Text = ScoreMAUI;
+       // lblScore.Text = ScoreMAUI;
     }
 }
 
