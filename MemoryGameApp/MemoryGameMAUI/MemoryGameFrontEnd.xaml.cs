@@ -10,9 +10,9 @@ public partial class MemoryGameFrontEnd : ContentPage
 {
     public event EventHandler? ScoreChanged;
 
-    public enum GameRBEnum  {game1, game2, game3}
+    public enum GameRBEnum { game1, game2, game3 }
 
-    GameRBEnum _gamerb = GameRBEnum.game1; 
+    GameRBEnum _gamerb = GameRBEnum.game1;
 
     Game game;
     List<Game> lstgame = new() { new Game(), new Game(), new Game() };
@@ -47,7 +47,7 @@ public partial class MemoryGameFrontEnd : ContentPage
     Button btn1test = new();
     Button btn2test = new();
 
-    public GameRBEnum GameRb{ get; set; }
+    public GameRBEnum GameRb { get; set; }
 
     public string ScoreMAUI
     {
@@ -113,6 +113,7 @@ public partial class MemoryGameFrontEnd : ContentPage
         }
         else if (btn == bNextTurn)
         {
+            Spots spot = new();
             game.NextTurn();
             if (game.spot1test.BackColor != game.spot2test.BackColor)
             {
@@ -122,10 +123,21 @@ public partial class MemoryGameFrontEnd : ContentPage
                     {
                         b.BackgroundColor = blue;
                     }
-                }
-                );
+                });
+                game.Spot.ForEach(s =>
+                {
+                    if (s.BackColorMaui != gray)
+                    {
+                        s.BackColorMaui = blue;
+                    }
+                });
+
+                //game.spot1test.BackColor = spot.BlueBackColor;
+                //game.spot2test.BackColor = spot.BlueBackColor;
+
             }
-            else if (game.spot1test.BackColor == game.spot2test.BackColor)
+
+            if (game.spot1test.BackColor == game.spot2test.BackColor)
             {
                 if (Game1Rb.IsChecked == true)
                 {
@@ -157,6 +169,13 @@ public partial class MemoryGameFrontEnd : ContentPage
                     }
                 }
                 );
+                game.Spot.ForEach(s =>
+                {
+                    if (s.BackColorMaui != blue)
+                    {
+                        s.BackColor = s.GrayBackColor;
+                    }
+                });
             }
             if (lstbuttons.TrueForAll(b => b.BackgroundColor == gray))
             {
@@ -167,6 +186,37 @@ public partial class MemoryGameFrontEnd : ContentPage
             EnableButtons(true);
         }
     }
+
+    private void NextTurn(Button btn)
+    {
+        Spots spot = new();
+        game.NextTurn();
+        if (btn == bNextTurn)
+        {
+            if (game.spot1test.BackColor != game.spot2test.BackColor)
+            {
+                lstbuttons.ForEach(b =>
+                {
+                    if (b.BackgroundColor != gray)
+                    {
+                        b.BackgroundColor = blue;
+                    }
+                });
+                game.Spot.ForEach(s =>
+                {
+                    if (s.BackColorMaui != blue)
+                    {
+                        s.BackColor = s.GrayBackColor;
+                    }
+                });
+
+                //game.spot1test.BackColor = spot.BlueBackColor;
+                //game.spot2test.BackColor = spot.BlueBackColor;
+
+            }
+        }
+    }
+
 
     private void EnableButtons(bool enable)
     {
@@ -225,7 +275,8 @@ public partial class MemoryGameFrontEnd : ContentPage
     {
         if (sender is Button)
         {
-            SetSpots((Button)sender);
+            //SetSpots((Button)sender);
+            NextTurn((Button)sender);
         }
     }
 
@@ -235,14 +286,21 @@ public partial class MemoryGameFrontEnd : ContentPage
         if (rb.IsChecked == true && rb.BindingContext != null)
         {
             game = (Game)rb.BindingContext;
+            foreach (var item in game.Spot)
+            {
+                var ind = game.Spot.IndexOf(item);
+                //lstbuttons.ForEach(b => b.BackgroundColor = item.BackColorMaui);
+                lstbuttons[ind].BackgroundColor = item.BackColorMaui;
+            }
             this.BindingContext = game;
         }
-       // StartGame();
+        // StartGame();
     }
 
     private void G_ScoreChanged(object sender, EventArgs e)
     {
-       // lblScore.Text = ScoreMAUI;
+        lblScore.Text = ScoreMAUI;
     }
+
 }
 

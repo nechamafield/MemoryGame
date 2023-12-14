@@ -33,6 +33,7 @@ namespace MemoryGameSystem
         public Microsoft.Maui.Graphics.Color BackColorMaui
         {
             get => this.ConvertToMauiColor(this.BackColor);
+            set { }
         }
 
         public System.Drawing.Color BlueBackColor
