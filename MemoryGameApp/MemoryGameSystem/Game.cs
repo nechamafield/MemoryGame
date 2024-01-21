@@ -41,6 +41,9 @@ namespace MemoryGameSystem
             ////      Color c = GetRandomBackColor();
             ////      assign 2 random btns from lstButtonsRemaining to that color
             ////      remove those buttons from lstRemainingButtons
+            ///
+
+            //use part 3 - session 4 - while loop to make it random
 
 
             lstMatchingSets = new()

@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGameApp", "MemoryGame
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGameMAUI", "MemoryGameMAUI\MemoryGameMAUI.csproj", "{8308B7B6-6805-4BF0-8B00-CDD4F26A0058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGameSystem", "MemoryGameSystem\MemoryGameSystem.csproj", "{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGameSystem", "MemoryGameSystem\MemoryGameSystem.csproj", "{00EA2AC4-4B76-4CC1-9307-D3C4BCCFD337}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGameTest", "MemoryGameTest\MemoryGameTest.csproj", "{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGameTest", "MemoryGameTest\MemoryGameTest.csproj", "{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSMemoryGame", "..\..\nfield\Software\JSMemoryGame\JSMemoryGame\JSMemoryGame.csproj", "{5A630776-C72C-4EFD-A3CE-8E5A3BE9DC52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA525F6C-90A0-4039-9D8D-7A3DF3DF2073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A630776-C72C-4EFD-A3CE-8E5A3BE9DC52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A630776-C72C-4EFD-A3CE-8E5A3BE9DC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A630776-C72C-4EFD-A3CE-8E5A3BE9DC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A630776-C72C-4EFD-A3CE-8E5A3BE9DC52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

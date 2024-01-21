@@ -96,6 +96,7 @@ public partial class MemoryGameFrontEnd : ContentPage
             {
                 game.spot1test = spot;
                 game.spot1test.BackColor = spot.ColorfulBackColor;
+                spot.BackColorMaui = btn.BackgroundColor;
                 btn.BackgroundColor = spot.BackColorMaui;
             }
             else if (game.spot1test != null && game.spot2test is null)
@@ -171,7 +172,7 @@ public partial class MemoryGameFrontEnd : ContentPage
                 );
                 game.Spot.ForEach(s =>
                 {
-                    if (s.BackColorMaui != blue)
+                    if (s.BackColorMaui != s.BlueBackColorMaui)
                     {
                         s.BackColor = s.GrayBackColor;
                     }
@@ -236,6 +237,7 @@ public partial class MemoryGameFrontEnd : ContentPage
             game.Start();
             //lblScore.Text = "";
             lstbuttons.ForEach(b => b.BackgroundColor = blue);
+            game.Spot.ForEach(s => s.BackColorMaui = blue);
             EnableButtons(IsEnabled);
             bNextTurn.IsEnabled = false;
             game.ResetBtns();
@@ -275,8 +277,8 @@ public partial class MemoryGameFrontEnd : ContentPage
     {
         if (sender is Button)
         {
-            //SetSpots((Button)sender);
-            NextTurn((Button)sender);
+            SetSpots((Button)sender);
+            //NextTurn((Button)sender);
         }
     }
 
@@ -285,9 +287,11 @@ public partial class MemoryGameFrontEnd : ContentPage
         RadioButton rb = (RadioButton)sender;
         if (rb.IsChecked == true && rb.BindingContext != null)
         {
+            Button btn = new();
             game = (Game)rb.BindingContext;
             foreach (var item in game.Spot)
             {
+                btn.BackgroundColor = item.BackColorMaui;
                 var ind = game.Spot.IndexOf(item);
                 //lstbuttons.ForEach(b => b.BackgroundColor = item.BackColorMaui);
                 lstbuttons[ind].BackgroundColor = item.BackColorMaui;
