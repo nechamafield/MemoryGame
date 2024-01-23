@@ -1,0 +1,99 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.spot {
+    min-width: 90px;
+    min-height: 90px;
+    width: 90%;
+    height: 90%;
+    /*background-color: gray;*/
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: xx-large;
+}
+
+.notClicked{
+    background-color: gray
+}
+
+.m1{
+     background-color: beige
+ }
+.m2 {
+    background-color: cadetblue
+}
+.m3 {
+    background-color: blueviolet
+}
+.m4 {
+    background-color: navy
+}
+.m5 {
+    background-color: aquamarine
+}
+.m6 {
+    background-color: hotpink
+}
+.m7 {
+    background-color: rosybrown
+}
+.m8 {
+    background-color: lime
+}
+.m9 {
+    background-color: yellow
+}
+.m10 {
+    background-color: lightpink
+}
+.m11 {
+    background-color: darkgreen
+}
+.m12 {
+    background-color: lightblue
+}
+.m13 {
+    background-color: mediumaquamarine
+}
+.m14 {
+    background-color: sandybrown
+}
+.m15 {
+    background-color: indianred
+}
+.m16 {
+    background-color: goldenrod
+}
+.m17 {
+    background-color: cornflowerblue
+}
+.m18 {
+    background-color: paleturquoise
+}
+
+ .alreadyMatched{
+     background-color: lightgray
+ }
+

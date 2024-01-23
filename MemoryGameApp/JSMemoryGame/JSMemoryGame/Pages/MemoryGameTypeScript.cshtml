@@ -1,0 +1,148 @@
+﻿@page
+@model JSMemoryGame.Pages.MemoryGameTypeScriptModel
+@{
+}
+<div class="row">
+    <div class="col-1">
+        <button class="btn btn-warning fs-3" id="btnStart" onclick="startGame()">Start</button>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-warning fs-3" id="btnNextTurn" onclick="nextTurn()" disabled>Next Turn</button>
+    </div>
+    <div class="col-3">
+        <label class="align-self-center fs-3">Turn Number:</label>
+        <div id="turnnumber" class="text-center"></div>
+    </div>
+    <div class="col-4">
+        <label class="align-self-center fs-3">Score:</label>
+        <div id="scorenumber" class="text-center"></div>
+    </div>
+</div>
+<div class="row">
+    <table>
+        <tr>
+            <td>
+                <button class="spot " color="" id="s11"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s12"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s13"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s14"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s15"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s16"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="spot " color="" id="s21"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s22"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s23"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s24"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s25"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s26"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="spot " color="" id="s31"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s32"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s33"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s34"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s35"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s36"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="spot " color="" id="s41"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s42"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s43"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s44"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s45"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s46"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="spot " color="" id="s51"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s52"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s53"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s54"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s55"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s56"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="spot " color="" id="s61"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s62"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s63"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s64"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s65"></button>
+            </td>
+            <td>
+                <button class="spot " color="" id="s66"></button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="~/js/MemoryGameTypeScript.js" asp-append-version="true">
+</script>
+

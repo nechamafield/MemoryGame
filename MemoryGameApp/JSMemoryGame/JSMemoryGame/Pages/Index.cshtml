@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Memory Game!!</h1>
+    <p class="text-bg-light fs-4">
+        The player is presented with a 6x6 grid of buttons. The player clicks on two buttons at a time
+        and checks if the colors match. If they match the score and the number of turns will go up, if
+        they do not match only the number of turns will go up, while the score will remain the same.
+    </p>
+    <ul class="text-start text-dark fs-5">
+        <li>
+            The game starts when the player clicks Start. Until then all clicks on buttons are ignored.
+        </li>
+        <li>After Start is clicked the message on the Turn Number and Score will keep track of the game.</li>
+        <li>
+            During each turn the player will click 2 buttons that he thinks may be a set. If they match,
+            both the Turn Number and the Score will increase, while if they don’t the Score will
+            remain the same.
+        </li>
+        <li>
+            To start the next turn, the player will click the Next Turn button, and the colors from the
+            previous turn will disappear if they were not a match.
+        </li>
+        <li>
+            Once all the sets are made, all the buttons will be ignored, and the number of turns will
+            be displayed.
+        </li>
+        <li>
+            If the player clicks start in the middle of a game, then the game should interrupt and
+            begin a new game.
+        </li>
+    </ul>
+</div>
