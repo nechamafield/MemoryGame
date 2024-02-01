@@ -157,6 +157,7 @@
         let allSpots = [...document.querySelectorAll(".spot")];
         let spotsToMatch = [...document.querySelectorAll(".spot")];
         let winningsets = [];
+        //AF What is "chunk" referring to?  It doesn't seem like such a clear variable name to me
         let chunk = [];
 
         let lstColorClasses = [];
@@ -167,7 +168,9 @@
 
         startGame();
 
+        //AF  A lot more code should be moved into the document.ready, you can look back at the session to review if you need clarification on what should be in here
         $(document).ready(function () {
+            //AF I see you are setting these variables to the same values as you set them above, it doesn't seem necessary
             turnNumber = document.querySelector("#turnnumber");
             scoreNumber = document.querySelector("#scorenumber");
             allSpots = [...document.querySelectorAll(".spot")];
@@ -198,6 +201,7 @@
             turnNumber.textContent = 0;
             scoreNumber.textContent = 0;
             $(allSpots).removeClass("alreadyMatched").removeClass(getAttribute("color")).addClass("notClicked");
+            //AF For this HW, Jquery should be used here since the instructions were to use jquery in places where it would be more efficient and this is a good example of that
             allSpots.forEach(s => {
                 s.disabled = false;
                 //s.classList.remove(s.getAttribute("color"));
