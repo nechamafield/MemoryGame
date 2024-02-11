@@ -6,6 +6,8 @@ var memorygame;
     let btn2;
     let turnnumint = 1;
     let scorenumint = 1;
+    //AF Since you are setting turnNumber in the line right below, it's wordy to declare it and set it in 2 separate lines of code 
+    //AF Same comment for the variables below, it's wordy to set the value on a separate line if you are declaring it right above
     let turnNumber;
     turnNumber = document.querySelector("#turnnumber");
     let scoreNumber;
@@ -16,6 +18,7 @@ var memorygame;
     spotsToMatch = [...document.querySelectorAll(".spot")];
     const winningsets = [];
     let chunk = [];
+    //AF Seems like this class is not being used
     class colorclass {
     }
     ;
@@ -25,6 +28,7 @@ var memorygame;
     allSpots.forEach(s => s.addEventListener("click", takeSpot));
     startGame();
     function setMatchesRandomly() {
+        //AF This variable s is not being used
         let s = spotsToMatch.length;
         spotsToMatch.sort(() => Math.random() - 0.5);
         for (let i = 0; i < spotsToMatch.length; i += 2) {
@@ -78,6 +82,7 @@ var memorygame;
             return;
         }
         if (btn2 != null) {
+            //AF Since you are referencing this button more than once, it would be nicer to have it set in a global variable
             document.getElementById("btnNextTurn").disabled = false;
         }
     }
