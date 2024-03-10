@@ -4,42 +4,35 @@ var memorygame;
     let nextturn = false;
     let btn1;
     let btn2;
+    let btnNextTurn = document.querySelector("#btnNextTurn");
     let turnnumint = 1;
     let scorenumint = 1;
-    //AF Since you are setting turnNumber in the line right below, it's wordy to declare it and set it in 2 separate lines of code 
-    //AF Same comment for the variables below, it's wordy to set the value on a separate line if you are declaring it right above
-    let turnNumber;
-    turnNumber = document.querySelector("#turnnumber");
-    let scoreNumber;
-    scoreNumber = document.querySelector("#scorenumber");
+    let turnNumber = document.querySelector("#turnnumber");
+    let scoreNumber = document.querySelector("#scorenumber");
     let allSpots = [];
     allSpots = [...document.querySelectorAll(".spot")];
     let spotsToMatch = [];
     spotsToMatch = [...document.querySelectorAll(".spot")];
-    const winningsets = [];
-    let chunk = [];
-    //AF Seems like this class is not being used
-    class colorclass {
-    }
-    ;
+    let winningsets = [];
+    let match = [];
     let lstColorClasses = [];
     lstColorClasses.push('m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'm9', 'm10', 'm11', 'm12', 'm13', 'm14', 'm15', 'm16', 'm17', 'm18');
-    setMatchesRandomly();
+    document.querySelector("#btnStart").addEventListener("click", startGame);
+    document.querySelector("#btnNextTurn").addEventListener("click", nextTurn);
     allSpots.forEach(s => s.addEventListener("click", takeSpot));
-    startGame();
+    setMatchesRandomly();
     function setMatchesRandomly() {
-        //AF This variable s is not being used
-        let s = spotsToMatch.length;
         spotsToMatch.sort(() => Math.random() - 0.5);
         for (let i = 0; i < spotsToMatch.length; i += 2) {
-            chunk = [spotsToMatch.slice(i, i + 2)];
-            winningsets.push(...chunk);
+            match = [spotsToMatch.slice(i, i + 2)];
+            winningsets.push(...match);
         }
         console.log(winningsets);
         lstColorClasses.sort(() => Math.random() - 0.5);
         winningsets.forEach(function (set, index) { set.forEach(function (button) { button.setAttribute("color", lstColorClasses[index]); }); });
     }
     function startGame() {
+        winningsets = [];
         gameOver = false;
         nextturn = false;
         btn1 = null;
@@ -54,6 +47,7 @@ var memorygame;
             s.classList.add("notClicked");
             s.disabled = false;
         });
+        setMatchesRandomly();
     }
     function colorfulClickRandom(btn) {
         btn.classList.remove("notClicked");
@@ -82,8 +76,7 @@ var memorygame;
             return;
         }
         if (btn2 != null) {
-            //AF Since you are referencing this button more than once, it would be nicer to have it set in a global variable
-            document.getElementById("btnNextTurn").disabled = false;
+            btnNextTurn.disabled = false;
         }
     }
     function nextTurn() {
@@ -104,8 +97,11 @@ var memorygame;
             btn1.disabled = false;
             btn2.disabled = false;
         }
-        document.getElementById("btnNextTurn").disabled = true;
+        btnNextTurn.disabled = true;
         btn1 = null;
         btn2 = null;
+        if (allSpots.every(s => s.classList.contains("alreadyMatched"))) {
+            document.querySelector("#msgGameOver").textContent = `Game over! ---------- ${turnNumber.textContent} Tries!!`;
+        }
     }
 })(memorygame || (memorygame = {}));

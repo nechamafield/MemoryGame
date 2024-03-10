@@ -3,35 +3,33 @@
     let nextturn = false;
     let btn1: HTMLButtonElement;
     let btn2: HTMLButtonElement;
+    let btnNextTurn: HTMLButtonElement = document.querySelector("#btnNextTurn")
     let turnnumint = 1;
     let scorenumint = 1;
-    let turnNumber: Element;
-    turnNumber = document.querySelector("#turnnumber");
-    let scoreNumber: Element;
-    scoreNumber = document.querySelector("#scorenumber");
+    let turnNumber: Element = document.querySelector("#turnnumber");
+    let scoreNumber: Element = document.querySelector("#scorenumber");
     let allSpots: HTMLButtonElement[] = [];
     allSpots = [...document.querySelectorAll<HTMLButtonElement>(".spot")];
     let spotsToMatch: Element[] = [];
     spotsToMatch = [...document.querySelectorAll(".spot")];
-    const winningsets: Element[][] = [];
-    let chunk = [];
-    class colorclass { };
+    let winningsets: Element[][] = [];
+    let match = [];
 
     let lstColorClasses: string[] = [];
     lstColorClasses.push('m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7', 'm8', 'm9', 'm10', 'm11', 'm12', 'm13', 'm14', 'm15', 'm16', 'm17', 'm18');
+    document.querySelector("#btnStart").addEventListener("click", startGame);
+    document.querySelector("#btnNextTurn").addEventListener("click", nextTurn);
 
-    setMatchesRandomly();
     allSpots.forEach(s => s.addEventListener("click", takeSpot));
 
-    startGame();
+    setMatchesRandomly();
 
     function setMatchesRandomly() {
-        let s = spotsToMatch.length;
         spotsToMatch.sort(() => Math.random() - 0.5);
 
         for (let i = 0; i < spotsToMatch.length; i += 2) {
-            chunk = [spotsToMatch.slice(i, i + 2)];
-            winningsets.push(...chunk);
+            match = [spotsToMatch.slice(i, i + 2)];
+            winningsets.push(...match);
         }
         console.log(winningsets);
 
@@ -40,7 +38,8 @@
     }
 
 
-    function startGame(){
+    function startGame() {
+        winningsets = [];
         gameOver = false;
         nextturn = false;
         btn1 = null;
@@ -55,6 +54,7 @@
             s.classList.add("notClicked");
             s.disabled = false;
         });
+        setMatchesRandomly();
     }
 
     function colorfulClickRandom(btn: Element) {
@@ -88,7 +88,7 @@
             return;
         }
         if (btn2 != null) {
-            (document.getElementById("btnNextTurn") as HTMLButtonElement).disabled = false;
+            btnNextTurn.disabled = false;
         }
     }
 
@@ -110,8 +110,11 @@
             btn1.disabled = false;
             btn2.disabled = false;
         }
-        (document.getElementById("btnNextTurn") as HTMLButtonElement).disabled = true;
+        btnNextTurn.disabled = true;
         btn1 = null;
         btn2 = null;
+        if (allSpots.every(s => s.classList.contains("alreadyMatched"))) {
+            document.querySelector("#msgGameOver").textContent = `Game over! ---------- ${turnNumber.textContent} Tries!!`;
+        }
     }
 }

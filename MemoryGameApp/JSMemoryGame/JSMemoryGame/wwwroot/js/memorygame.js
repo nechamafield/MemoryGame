@@ -10,7 +10,7 @@ const scoreNumber = document.querySelector("#scorenumber");
 const allSpots = [...document.querySelectorAll(".spot")];
 const spotsToMatch = [...document.querySelectorAll(".spot")];
 const winningsets = [];
-let chunk = [];
+let match = [];
 class colorclass { };
 
 let lstColorClasses = [];
@@ -26,8 +26,8 @@ function setMatchesRandomly() {
     spotsToMatch.sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < spotsToMatch.length; i += 2) {
-        chunk = [spotsToMatch.slice(i, i + 2)];
-        winningsets.push(...chunk);
+        match = [spotsToMatch.slice(i, i + 2)];
+        winningsets.push(...match);
     }
     console.log(winningsets);
 
